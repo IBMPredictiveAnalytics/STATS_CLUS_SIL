@@ -1,0 +1,177 @@
+#/***********************************************************************
+# * Licensed Materials - Property of IBM 
+# *
+# * IBM SPSS Products: Statistics Common
+# *
+# * (C) Copyright IBM Corp. 1989, 2014
+# *
+# * US Government Users Restricted Rights - Use, duplication or disclosure
+# * restricted by GSA ADP Schedule Contract with IBM Corp. 
+# ************************************************************************/
+
+# NLS_ENCODING=UTF-8
+# IBMUPYTH
+
+
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2014-05-21 17:51+China Standard Time\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: STATS_CLUS_SIL.py:121
+msgid "Absolute Difference"
+msgstr ""
+"Różnica bezwzględna"
+
+#: STATS_CLUS_SIL.py:121
+msgid "Euclid"
+msgstr ""
+"Euklidesowa"
+
+#: STATS_CLUS_SIL.py:121 STATS_CLUS_SIL.py:460
+msgid "Maximum"
+msgstr ""
+"Maksimum"
+
+#: STATS_CLUS_SIL.py:122
+msgid "Gower"
+msgstr ""
+"Gower"
+
+#: STATS_CLUS_SIL.py:128
+msgid "All variables must be numeric for the selected dissimilarity measure."
+msgstr ""
+"Wszystkie zmienne muszą być liczbowe dla wybranej miary niepodobieństwa."
+
+#: STATS_CLUS_SIL.py:133
+msgid "The Minkowski measure requires the power to be specified"
+msgstr ""
+"Miara odległości Minkowskiego wymaga określenia mocy"
+
+#: STATS_CLUS_SIL.py:170
+msgid "At least one variable is entirely missing"
+msgstr ""
+"Co najmniej jednej zmiennej brakuje całkowicie"
+
+#: STATS_CLUS_SIL.py:174
+msgid "The number of variable weights must be equal to the number of variables"
+msgstr ""
+"Liczba wag zmiennych musi być równa liczbie zmiennych"
+
+#: STATS_CLUS_SIL.py:313
+msgid ""
+"Silhouettes cannot be computed: either there is only one cluster\n"
+"or every cluster is size 1"
+msgstr ""
+"Nie można obliczyć sylwetek: istnieje tylko jedno skupienie\n"
+"lub wielkość każdego skupienia wynosi 1"
+
+#: STATS_CLUS_SIL.py:398
+msgid "The cluster number variable cannot be included as a clustering variable"
+msgstr ""
+"Zmiennej liczby skupień nie można uwzględnić jako zmiennej grupowania"
+
+#: STATS_CLUS_SIL.py:403
+msgid "There are duplicate or undefined variables specified.  Note that variable names are case sensitive"
+msgstr ""
+"Istnieją określone powielone lub niezdefiniowane zmienne. W nazwach zmiennych rozpoznawane są małe i wielkie litery"
+
+#: STATS_CLUS_SIL.py:420 STATS_CLUS_SIL.py:501
+msgid "Next Best Cluster"
+msgstr ""
+"Kolejne najlepsze skupienie"
+
+#: STATS_CLUS_SIL.py:421
+msgid "Silhouette"
+msgstr ""
+"Sylwetka"
+
+#: STATS_CLUS_SIL.py:450
+msgid "Total"
+msgstr ""
+"Łącznie"
+
+#: STATS_CLUS_SIL.py:456
+msgid "Silhouette Statistics"
+msgstr ""
+"Statystyka sylwetki"
+
+#: STATS_CLUS_SIL.py:458
+msgid "Cluster"
+msgstr ""
+"Skupienie"
+
+#: STATS_CLUS_SIL.py:459
+msgid "Statistics"
+msgstr ""
+"Statystyki"
+
+#: STATS_CLUS_SIL.py:460
+msgid "Case Count"
+msgstr ""
+"Liczebność obserwacji"
+
+#: STATS_CLUS_SIL.py:460
+msgid "Mean"
+msgstr ""
+"Średnia"
+
+#: STATS_CLUS_SIL.py:460
+msgid "Minimum"
+msgstr ""
+"Minimum"
+
+#: STATS_CLUS_SIL.py:467
+msgid "Histogram of Silhouettes"
+msgstr ""
+"Histogram sylwetek"
+
+#: STATS_CLUS_SIL.py:468
+msgid "Dissimilarity measure = %s"
+msgstr ""
+"Miara niepodobieństwa = %s"
+
+#: STATS_CLUS_SIL.py:469
+msgid "Silhouettes by Cluster"
+msgstr ""
+"Sylwetki wg skupienia"
+
+#: STATS_CLUS_SIL.py:486
+msgid "Mean Silhouette by Cluster"
+msgstr ""
+"Średnia sylwetki wg skupienia"
+
+#: STATS_CLUS_SIL.py:499
+msgid "Assigned Cluster"
+msgstr ""
+"Przypisane skupienie"
+
+#: STATS_CLUS_SIL.py:500
+msgid "Percentage of Assigned Cluster"
+msgstr ""
+"Wartość procentowa przypisanego skupienia"
+
+#: STATS_CLUS_SIL.py:502
+msgid "Distribution of Next Best Clusters"
+msgstr ""
+"Rozkład kolejnego najlepszego skupienia"
+
+#: STATS_CLUS_SIL.py:580
+msgid "---"
+msgstr ""
+"---"
+
+
+

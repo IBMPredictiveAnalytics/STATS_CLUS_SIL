@@ -1,0 +1,177 @@
+#/***********************************************************************
+# * Licensed Materials - Property of IBM 
+# *
+# * IBM SPSS Products: Statistics Common
+# *
+# * (C) Copyright IBM Corp. 1989, 2014
+# *
+# * US Government Users Restricted Rights - Use, duplication or disclosure
+# * restricted by GSA ADP Schedule Contract with IBM Corp. 
+# ************************************************************************/
+
+# NLS_ENCODING=UTF-8
+# IBMUPYTH
+
+
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2014-05-21 17:51+China Standard Time\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: STATS_CLUS_SIL.py:121
+msgid "Absolute Difference"
+msgstr ""
+"绝对差值"
+
+#: STATS_CLUS_SIL.py:121
+msgid "Euclid"
+msgstr ""
+"欧几里得"
+
+#: STATS_CLUS_SIL.py:121 STATS_CLUS_SIL.py:460
+msgid "Maximum"
+msgstr ""
+"最大值"
+
+#: STATS_CLUS_SIL.py:122
+msgid "Gower"
+msgstr ""
+"高尔"
+
+#: STATS_CLUS_SIL.py:128
+msgid "All variables must be numeric for the selected dissimilarity measure."
+msgstr ""
+"对于选择的非相似性测量，所有变量都必须是数字。"
+
+#: STATS_CLUS_SIL.py:133
+msgid "The Minkowski measure requires the power to be specified"
+msgstr ""
+"明可夫斯基测量要求指定幂"
+
+#: STATS_CLUS_SIL.py:170
+msgid "At least one variable is entirely missing"
+msgstr ""
+"至少一个变量完全缺失"
+
+#: STATS_CLUS_SIL.py:174
+msgid "The number of variable weights must be equal to the number of variables"
+msgstr ""
+"变量权重数必须等于变量数"
+
+#: STATS_CLUS_SIL.py:313
+msgid ""
+"Silhouettes cannot be computed: either there is only one cluster\n"
+"or every cluster is size 1"
+msgstr ""
+"无法计算轮廓：只有一个聚类\n"
+"或者各个聚类的大小均为 1"
+
+#: STATS_CLUS_SIL.py:398
+msgid "The cluster number variable cannot be included as a clustering variable"
+msgstr ""
+"不得包括聚类编号变量作为聚类变量"
+
+#: STATS_CLUS_SIL.py:403
+msgid "There are duplicate or undefined variables specified.  Note that variable names are case sensitive"
+msgstr ""
+"指定了重复的或者未定义的变量。请注意，变量名称区分大小写"
+
+#: STATS_CLUS_SIL.py:420 STATS_CLUS_SIL.py:501
+msgid "Next Best Cluster"
+msgstr ""
+"下一最佳聚类"
+
+#: STATS_CLUS_SIL.py:421
+msgid "Silhouette"
+msgstr ""
+"轮廓"
+
+#: STATS_CLUS_SIL.py:450
+msgid "Total"
+msgstr ""
+"总计"
+
+#: STATS_CLUS_SIL.py:456
+msgid "Silhouette Statistics"
+msgstr ""
+"轮廓统计"
+
+#: STATS_CLUS_SIL.py:458
+msgid "Cluster"
+msgstr ""
+"聚类"
+
+#: STATS_CLUS_SIL.py:459
+msgid "Statistics"
+msgstr ""
+"统计"
+
+#: STATS_CLUS_SIL.py:460
+msgid "Case Count"
+msgstr ""
+"个案计数"
+
+#: STATS_CLUS_SIL.py:460
+msgid "Mean"
+msgstr ""
+"平均值"
+
+#: STATS_CLUS_SIL.py:460
+msgid "Minimum"
+msgstr ""
+"最小值"
+
+#: STATS_CLUS_SIL.py:467
+msgid "Histogram of Silhouettes"
+msgstr ""
+"轮廓直方图"
+
+#: STATS_CLUS_SIL.py:468
+msgid "Dissimilarity measure = %s"
+msgstr ""
+"非相似性测量 = %s"
+
+#: STATS_CLUS_SIL.py:469
+msgid "Silhouettes by Cluster"
+msgstr ""
+"按聚类排列的轮廓"
+
+#: STATS_CLUS_SIL.py:486
+msgid "Mean Silhouette by Cluster"
+msgstr ""
+"按聚类排列的平均值轮廓"
+
+#: STATS_CLUS_SIL.py:499
+msgid "Assigned Cluster"
+msgstr ""
+"分配的聚类"
+
+#: STATS_CLUS_SIL.py:500
+msgid "Percentage of Assigned Cluster"
+msgstr ""
+"分配的聚类所占的百分比"
+
+#: STATS_CLUS_SIL.py:502
+msgid "Distribution of Next Best Clusters"
+msgstr ""
+"下一最佳聚类的分布"
+
+#: STATS_CLUS_SIL.py:580
+msgid "---"
+msgstr ""
+"---"
+
+
+

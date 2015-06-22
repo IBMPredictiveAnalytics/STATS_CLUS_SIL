@@ -1,0 +1,148 @@
+#/***********************************************************************
+# * Licensed Materials - Property of IBM 
+# *
+# * IBM SPSS Products: Statistics Common
+# *
+# * (C) Copyright IBM Corp. 1989, 2014
+# *
+# * US Government Users Restricted Rights - Use, duplication or disclosure
+# * restricted by GSA ADP Schedule Contract with IBM Corp. 
+# ************************************************************************/
+
+# NLS_ENCODING=UTF-8
+# IBMUPYTH
+
+
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2014-05-21 17:51+China Standard Time\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: STATS_CLUS_SIL.py:121
+msgid "Absolute Difference"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:121
+msgid "Euclid"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:121 STATS_CLUS_SIL.py:460
+msgid "Maximum"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:122
+msgid "Gower"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:128
+msgid "All variables must be numeric for the selected dissimilarity measure."
+msgstr ""
+
+#: STATS_CLUS_SIL.py:133
+msgid "The Minkowski measure requires the power to be specified"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:170
+msgid "At least one variable is entirely missing"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:174
+msgid "The number of variable weights must be equal to the number of variables"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:313
+msgid ""
+"Silhouettes cannot be computed: either there is only one cluster\n"
+"or every cluster is size 1"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:398
+msgid "The cluster number variable cannot be included as a clustering variable"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:403
+msgid "There are duplicate or undefined variables specified.  Note that variable names are case sensitive"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:420 STATS_CLUS_SIL.py:501
+msgid "Next Best Cluster"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:421
+msgid "Silhouette"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:450
+msgid "Total"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:456
+msgid "Silhouette Statistics"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:458
+msgid "Cluster"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:459
+msgid "Statistics"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:460
+msgid "Case Count"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:460
+msgid "Mean"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:460
+msgid "Minimum"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:467
+msgid "Histogram of Silhouettes"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:468
+msgid "Dissimilarity measure = %s"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:469
+msgid "Silhouettes by Cluster"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:486
+msgid "Mean Silhouette by Cluster"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:499
+msgid "Assigned Cluster"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:500
+msgid "Percentage of Assigned Cluster"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:502
+msgid "Distribution of Next Best Clusters"
+msgstr ""
+
+#: STATS_CLUS_SIL.py:580
+msgid "---"
+msgstr ""
+
+
+

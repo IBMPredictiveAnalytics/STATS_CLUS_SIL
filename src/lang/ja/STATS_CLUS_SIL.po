@@ -1,0 +1,177 @@
+#/***********************************************************************
+# * Licensed Materials - Property of IBM 
+# *
+# * IBM SPSS Products: Statistics Common
+# *
+# * (C) Copyright IBM Corp. 1989, 2014
+# *
+# * US Government Users Restricted Rights - Use, duplication or disclosure
+# * restricted by GSA ADP Schedule Contract with IBM Corp. 
+# ************************************************************************/
+
+# NLS_ENCODING=UTF-8
+# IBMUPYTH
+
+
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2014-05-21 17:51+China Standard Time\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: STATS_CLUS_SIL.py:121
+msgid "Absolute Difference"
+msgstr ""
+"絶対差"
+
+#: STATS_CLUS_SIL.py:121
+msgid "Euclid"
+msgstr ""
+"ユークリッド"
+
+#: STATS_CLUS_SIL.py:121 STATS_CLUS_SIL.py:460
+msgid "Maximum"
+msgstr ""
+"最大"
+
+#: STATS_CLUS_SIL.py:122
+msgid "Gower"
+msgstr ""
+"ガワー"
+
+#: STATS_CLUS_SIL.py:128
+msgid "All variables must be numeric for the selected dissimilarity measure."
+msgstr ""
+"選択した非類似度については、すべての変数が数値型でなければなりません。"
+
+#: STATS_CLUS_SIL.py:133
+msgid "The Minkowski measure requires the power to be specified"
+msgstr ""
+"Minkowski 測定方法では、べき乗を指定する必要があります"
+
+#: STATS_CLUS_SIL.py:170
+msgid "At least one variable is entirely missing"
+msgstr ""
+"少なくとも 1 つの変数が完全に欠損しています"
+
+#: STATS_CLUS_SIL.py:174
+msgid "The number of variable weights must be equal to the number of variables"
+msgstr ""
+"変数の重み付けの数は、変数の数と等しくなければなりません"
+
+#: STATS_CLUS_SIL.py:313
+msgid ""
+"Silhouettes cannot be computed: either there is only one cluster\n"
+"or every cluster is size 1"
+msgstr ""
+"シルエットを計算できません。クラスタが 1 つしかないか、\n"
+"すべてのクラスタのサイズが 1 になっています。"
+
+#: STATS_CLUS_SIL.py:398
+msgid "The cluster number variable cannot be included as a clustering variable"
+msgstr ""
+"クラスタ数変数をクラスタ変数として含めることはできません"
+
+#: STATS_CLUS_SIL.py:403
+msgid "There are duplicate or undefined variables specified.  Note that variable names are case sensitive"
+msgstr ""
+"重複する変数または未定義の変数が指定されています。変数名は大文字と小文字が区別されることに注意してください。"
+
+#: STATS_CLUS_SIL.py:420 STATS_CLUS_SIL.py:501
+msgid "Next Best Cluster"
+msgstr ""
+"次に最適なクラスタ"
+
+#: STATS_CLUS_SIL.py:421
+msgid "Silhouette"
+msgstr ""
+"全体像"
+
+#: STATS_CLUS_SIL.py:450
+msgid "Total"
+msgstr ""
+"合計(T)"
+
+#: STATS_CLUS_SIL.py:456
+msgid "Silhouette Statistics"
+msgstr ""
+"シルエット統計量"
+
+#: STATS_CLUS_SIL.py:458
+msgid "Cluster"
+msgstr ""
+"クラスタ分析"
+
+#: STATS_CLUS_SIL.py:459
+msgid "Statistics"
+msgstr ""
+"統計量"
+
+#: STATS_CLUS_SIL.py:460
+msgid "Case Count"
+msgstr ""
+"ケース度数"
+
+#: STATS_CLUS_SIL.py:460
+msgid "Mean"
+msgstr ""
+"平均"
+
+#: STATS_CLUS_SIL.py:460
+msgid "Minimum"
+msgstr ""
+"最小"
+
+#: STATS_CLUS_SIL.py:467
+msgid "Histogram of Silhouettes"
+msgstr ""
+"シルエットのヒストグラム"
+
+#: STATS_CLUS_SIL.py:468
+msgid "Dissimilarity measure = %s"
+msgstr ""
+"非類似度 = %s"
+
+#: STATS_CLUS_SIL.py:469
+msgid "Silhouettes by Cluster"
+msgstr ""
+"クラスタ別シルエット"
+
+#: STATS_CLUS_SIL.py:486
+msgid "Mean Silhouette by Cluster"
+msgstr ""
+"クラスタ別平均シルエット"
+
+#: STATS_CLUS_SIL.py:499
+msgid "Assigned Cluster"
+msgstr ""
+"割り当てられたクラスタ"
+
+#: STATS_CLUS_SIL.py:500
+msgid "Percentage of Assigned Cluster"
+msgstr ""
+"割り当てられたクラスタのパーセンテージ"
+
+#: STATS_CLUS_SIL.py:502
+msgid "Distribution of Next Best Clusters"
+msgstr ""
+"次に最適なクラスタの分布"
+
+#: STATS_CLUS_SIL.py:580
+msgid "---"
+msgstr ""
+"---"
+
+
+

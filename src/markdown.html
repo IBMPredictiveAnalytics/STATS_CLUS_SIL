@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>OPTIONS</title>
+
+<link rel="stylesheet" type="text/css" href="extsyntax.css" />
+
+
+
+
+
+</head>
+
+<body>
+<p>STATS CLUSTER SIL Extension Command</p>
+
+<p>Calculate cluster silhouette statistics for a clustering analysis already carried out.</p>
+<div class="syntax">
+<p>STATS CLUS SIL<br/>
+CLUSTER = <em>variable</em><sup>&#42;</sup><br/>
+VARIABLES = <em>clustering variables</em><sup>&#42;</sup><br/>
+DISSIMILARITY = EUCLID<sup>&#42;&#42;</sup> or ABSDIFF or MINKOWSKI or GOWER or MAXIMUM<br/>
+MINKOWSKIPOWER = <em>number</em><br/>
+NEXTBEST = <em>variable</em><br/>
+SILHOUETTE = <em>variable</em>  </p>
+
+<p>/OPTIONS<br/>
+RENUMBERORDINAL = NO<sup>&#42;&#42;</sup> or YES<br/>
+VARWEIGHTS = <em>numbers</em><br/>
+MISSING = RESCALE<sup>&#42;&#42;</sup> or IGNORE or OMIT</p>
+
+<p>/OUTPUT<br/>
+HISTOGRAM = YES<sup>&#42;</sup> &#42; or NO<br/>
+ORIENTATION = HORIZONTAL<sup>&#42;&#42;</sup> or VERTICAL<br/>
+THREEDBAR = YES<sup>&#42;&#42;</sup> or NO<br/>
+THREEDCOUNTS = YES or NO<sup>&#42;&#42;</sup>  </p>
+
+<p>/HELP</p>
+
+<p><sup>&#42;</sup> Required<br/>
+<sup>&#42;&#42;</sup> Default</p>
+</div>
+<p>STATS CLUSTER SIL /HELP displays this help and does nothing else.</p>
+
+
+<pre class="example"><code>STATS CLUS SIL CLUSTER=clusternumber VARIABLES=x1 x2 x3
+DISSIMILARITY=ABSDIFF NEXTBEST = altclus SILHOUETTE = sil.
+</code></pre>
+
+<p>This command requires the data in memory and takes time that is proportional
+to the square of the number of cases.  With larger datasets, you may want to carry
+this analysis out on a random sample of the data.</p>
+
+<p><strong>CLUSTER</strong> specifies the variable containing the cluster number for each case.
+Gaps in the numbering, such as might occur if the cluster results are sampled,
+are treated as clusters of size 0.</p>
+
+<p><strong>VARIABLES</strong> lists the variables to be used for calculating silhouettes.  These would
+normally be the variables used to compute the clustering, but this is not required.</p>
+
+<p><strong>DISSIMILARITY</strong> specifies the function used to calculate the distance between cases.</p>
+
+<ul>
+<li>EUCLID is standard Euclidean distance.</li>
+<li>ABSDIFF is the sum of the absolute values of the variable differences.</li>
+<li>MINKOWSKI is the pth root of the sum of the pth power of the absolute differences.</li>
+<li>GOWER distinguishes variables according to the measurement level.  Scale variables
+are measured by absolute difference with each difference divided by the variable
+range.  Ordinal variables are renumbered so that the
+values range from 1 to M, where M is the number of distinct values and then treated
+as scale.  Nominal variable differences are 0 or 1 according to whether the values are
+equal or not.</li>
+<li>MAXIMUM is the maximum variable difference.  It is never rescaled, but the OMIT
+setting is honored.</li>
+</ul>
+
+<p><strong>NEXTBEST</strong> and <strong>SILHOUETTE</strong> specify variables for the casewise output.
+The NEXTBEST variable holds the number of the next best cluster.
+The SILHOUETTE variable holds the silhouette statistics.</p>
+
+<h2>OPTIONS</h2>
+
+<p><strong>RENUMBERORDINAL</strong> causes ordinal variables to be recoded as above.  It is always
+used for GOWER, but it can be used with any measure.</p>
+
+<p><strong>VARWEIGHTS</strong> can specify weights for each of the clustering variables.  If used,
+each variable difference is multiplied by the corresponding weight.  As many weights
+must be specified as there are clustering variables.</p>
+
+<p><strong>MISSING</strong> specifies how missing values are handled in case comparisions.  If a variable&#39;s
+contribution to the measure cannot be computed because either case has a missing value,
+there are three choices.  </p>
+
+<ul>
+<li>RESCALE causes the measure to be scaled up in proportion to the number 
+of contributions that are missing.<br/></li>
+<li>IGNORE causes the measure to be used without any adjustment (as long as 
+at least one variable contributes).<br/></li>
+<li>OMIT causes the case to be omitted from the calculations if any variable&#39;s contribution
+cannot be computed.</li>
+</ul>
+
+<h2>OUTPUT</h2>
+
+<p><strong>HISTOGRAM</strong> specifies whether a histogram of silhouette scores for each cluster
+is produced.  By default, the histograms are panelled horizontally.  </p>
+
+<p><strong>ORIENTATION</strong> = VERTICAL causes the histograms to be stacked.  Since all the
+histograms appear on one row, VERTICAL may be needed if there are many clusters.</p>
+
+<p><strong>THREEDBAR</strong> = YES produces a 3-d bar chart showing the average silhouette value by
+assigned cluster and the next best clusters.</p>
+
+<p><strong>THREEDCOUNTS</strong> produces a 3-d bar chart showing for each assigned cluster
+the percentage distribution of next best clusters.</p>
+
+<p>&copy; Copyright IBM Corp. 1989, 2014</p>
+
+</body>
+
+</html>
+

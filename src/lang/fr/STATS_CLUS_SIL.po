@@ -1,0 +1,177 @@
+#/***********************************************************************
+# * Licensed Materials - Property of IBM 
+# *
+# * IBM SPSS Products: Statistics Common
+# *
+# * (C) Copyright IBM Corp. 1989, 2014
+# *
+# * US Government Users Restricted Rights - Use, duplication or disclosure
+# * restricted by GSA ADP Schedule Contract with IBM Corp. 
+# ************************************************************************/
+
+# NLS_ENCODING=UTF-8
+# IBMUPYTH
+
+
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2014-05-21 17:51+China Standard Time\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: STATS_CLUS_SIL.py:121
+msgid "Absolute Difference"
+msgstr ""
+"Différence absolue"
+
+#: STATS_CLUS_SIL.py:121
+msgid "Euclid"
+msgstr ""
+"Euclide"
+
+#: STATS_CLUS_SIL.py:121 STATS_CLUS_SIL.py:460
+msgid "Maximum"
+msgstr ""
+"Maximum"
+
+#: STATS_CLUS_SIL.py:122
+msgid "Gower"
+msgstr ""
+"Gower"
+
+#: STATS_CLUS_SIL.py:128
+msgid "All variables must be numeric for the selected dissimilarity measure."
+msgstr ""
+"Toutes les variables doivent être numériques pour la mesure de dissimilarité sélectionnée."
+
+#: STATS_CLUS_SIL.py:133
+msgid "The Minkowski measure requires the power to be specified"
+msgstr ""
+"La mesure de Minkowski a besoin que la puissance soit spécifiée."
+
+#: STATS_CLUS_SIL.py:170
+msgid "At least one variable is entirely missing"
+msgstr ""
+"Au moins une variable est totalement manquante."
+
+#: STATS_CLUS_SIL.py:174
+msgid "The number of variable weights must be equal to the number of variables"
+msgstr ""
+"Le nombre de pondération de variables doit être égal au nombre de variables."
+
+#: STATS_CLUS_SIL.py:313
+msgid ""
+"Silhouettes cannot be computed: either there is only one cluster\n"
+"or every cluster is size 1"
+msgstr ""
+"Impossible de calculer les silhouettes : il existe un seul cluster\n"
+"ou chaque cluster a pour taille la valeur 1"
+
+#: STATS_CLUS_SIL.py:398
+msgid "The cluster number variable cannot be included as a clustering variable"
+msgstr ""
+"La variable de numéro du cluster ne peut pas être incluse en tant que variable de cluster."
+
+#: STATS_CLUS_SIL.py:403
+msgid "There are duplicate or undefined variables specified.  Note that variable names are case sensitive"
+msgstr ""
+"Des variables en double ou non définies ont été spécifiées. Notez que les noms de variable sont sensibles à la casse."
+
+#: STATS_CLUS_SIL.py:420 STATS_CLUS_SIL.py:501
+msgid "Next Best Cluster"
+msgstr ""
+"Prochain meilleur cluster"
+
+#: STATS_CLUS_SIL.py:421
+msgid "Silhouette"
+msgstr ""
+"Silhouette"
+
+#: STATS_CLUS_SIL.py:450
+msgid "Total"
+msgstr ""
+"Total"
+
+#: STATS_CLUS_SIL.py:456
+msgid "Silhouette Statistics"
+msgstr ""
+"Statistiques sur la silhouette"
+
+#: STATS_CLUS_SIL.py:458
+msgid "Cluster"
+msgstr ""
+"Cluster"
+
+#: STATS_CLUS_SIL.py:459
+msgid "Statistics"
+msgstr ""
+"Statistiques"
+
+#: STATS_CLUS_SIL.py:460
+msgid "Case Count"
+msgstr ""
+"Effectif des observations"
+
+#: STATS_CLUS_SIL.py:460
+msgid "Mean"
+msgstr ""
+"Moyenne"
+
+#: STATS_CLUS_SIL.py:460
+msgid "Minimum"
+msgstr ""
+"Minimum"
+
+#: STATS_CLUS_SIL.py:467
+msgid "Histogram of Silhouettes"
+msgstr ""
+"Histogramme des silhouettes"
+
+#: STATS_CLUS_SIL.py:468
+msgid "Dissimilarity measure = %s"
+msgstr ""
+"Mesure de dissimilarité = %s"
+
+#: STATS_CLUS_SIL.py:469
+msgid "Silhouettes by Cluster"
+msgstr ""
+"Silhouettes par cluster"
+
+#: STATS_CLUS_SIL.py:486
+msgid "Mean Silhouette by Cluster"
+msgstr ""
+"Silhouette moyenne par cluster"
+
+#: STATS_CLUS_SIL.py:499
+msgid "Assigned Cluster"
+msgstr ""
+"Cluster affecté"
+
+#: STATS_CLUS_SIL.py:500
+msgid "Percentage of Assigned Cluster"
+msgstr ""
+"Pourcentage de cluster affecté"
+
+#: STATS_CLUS_SIL.py:502
+msgid "Distribution of Next Best Clusters"
+msgstr ""
+"Distribution des prochains meilleurs clusters"
+
+#: STATS_CLUS_SIL.py:580
+msgid "---"
+msgstr ""
+"---"
+
+
+

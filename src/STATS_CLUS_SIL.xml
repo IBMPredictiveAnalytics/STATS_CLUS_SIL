@@ -1,0 +1,22 @@
+<Command xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extension.xsd" Name="STATS CLUS SIL" Language="Python" Mode="Source">
+	<Subcommand Name="" IsArbitrary="False" Occurrence="Optional">
+		<Parameter Name="CLUSTER" ParameterType="VariableName"/>
+		<Parameter Name="VARIABLES" ParameterType="VariableNameList"/>
+		<Parameter Name="DISSIMILARITY" ParameterType="Keyword"/>
+		<Parameter Name="MINKOWSKIPOWER" ParameterType="Number"/>
+		<Parameter Name="NEXTBEST" ParameterType="VariableName"/>
+		<Parameter Name="SILHOUETTE" ParameterType="VariableName"/>
+	</Subcommand>
+	<Subcommand Name="OPTIONS">
+		<Parameter Name="RENUMBERORDINAL" ParameterType="Keyword"/>
+		<Parameter Name="VARWEIGHTS" ParameterType="NumberList"/>
+		<Parameter Name="MISSING" ParameterType="Keyword"/>
+	</Subcommand>
+	<Subcommand Name="OUTPUT">
+		<Parameter Name="HISTOGRAM" ParameterType="Keyword"/>
+		<Parameter Name="ORIENTATION" ParameterType="Keyword"/>
+		<Parameter Name="THREEDBAR" ParameterType="Keyword"/>
+		<Parameter Name="THREEDCOUNTS" ParameterType="Keyword"/>
+	</Subcommand>
+	<Subcommand Name="HELP" Occurrence="Optional"/>
+</Command>

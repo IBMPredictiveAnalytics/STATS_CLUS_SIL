@@ -1,0 +1,17 @@
+Name: STATS CLUS SIL
+Dialog-Specs: STATS_CLUS_SIL.spd
+Command-Specs: STATS_CLUS_SIL.xml
+Code-Files: STATS_CLUS_SIL.py
+Misc-Files: markdown.html,extsyntax.css,IBMdialogicon.png
+Summary: compute silhouette measure for cluster analysis
+Description: This procedure computes and optionally plots silhouette m
+ easures useful in assessing the quality of a cluster analysis.  It pr
+ ovides several different dissimilarity measures and plots that work w
+ ith the output from a cluster analysis procedure
+Author: JKP, IBM SPSS
+Version: 1.0.4
+Product-Version: 18
+Date: 9/10/2011
+Categories: statistics
+Plugins: Python
+Translation-Catalogues: lang

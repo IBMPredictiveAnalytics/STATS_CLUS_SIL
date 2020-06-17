@@ -1,13 +1,13 @@
-from __future__ import with_statement
+
 #/***********************************************************************
-# * Licensed Materials - Property of IBM 
+# * Licensed Materials - Property of IBM
 # *
 # * IBM SPSS Products: Statistics Common
 # *
-# * (C) Copyright IBM Corp. 2014
+# * (C) Copyright IBM Corp. 1989, 2020
 # *
 # * US Government Users Restricted Rights - Use, duplication or disclosure
-# * restricted by GSA ADP Schedule Contract with IBM Corp. 
+# * restricted by GSA ADP Schedule Contract with IBM Corp.
 # ************************************************************************/
 
 # Compute and plot silhouettes for clustering
@@ -187,7 +187,7 @@ class Dissimfuncs(object):
                 if thevalues[0] is None:
                     del(thevalues[0])
                 # recode ordinal values to 1:V where V is the number of distinct values
-                recodedict = dict((k,float(v)) for k, v in zip(thevalues, range(1, len(thevalues)+1)))
+                recodedict = dict((k,float(v)) for k, v in zip(thevalues, list(range(1, len(thevalues)+1))))
                 recodedict[None] = None
                 for c in range(self.numcases):
                     self.cases[c][v] = recodedict[self.cases[c][v]]
@@ -543,7 +543,7 @@ def createvar(ds, name, varlabel, format, measlevel):
 def Run(args):
     """Execute the STATS CLUSTER SIL command"""
 
-    args = args[args.keys()[0]]
+    args = args[list(args.keys())[0]]
     ###print args   #debug
     
     ###debugging
@@ -583,7 +583,7 @@ def Run(args):
             return msg
 
         # A HELP subcommand overrides all else
-    if args.has_key("HELP"):
+    if "HELP" in args:
         #print helptext
         helper()
     else:
@@ -603,7 +603,7 @@ def helper():
     # webbrowser.open seems not to work well
     browser = webbrowser.get()
     if not browser.open_new(helpspec):
-        print("Help file not found:" + helpspec)
+        print(("Help file not found:" + helpspec))
 try:    #override
     from extension import helper
 except:
@@ -673,7 +673,7 @@ except:
 def attributesFromDict(d):
     """build self attributes from a dictionary d."""
     self = d.pop('self')
-    for name, value in d.iteritems():
+    for name, value in d.items():
         setattr(self, name, value)
         
 

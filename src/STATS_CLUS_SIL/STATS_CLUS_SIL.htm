@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+<title>Silhouette Statistics for Cluster Analysis</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>Silhouette Statistics for Cluster Analysis</h1>
+This procedure produces silhouette statistics for cluster analysis results that
+may be useful in assessing the clustering results.
+<p>
+The procedure requires the cases to be in memory, and the execution time
+is proportional to the square of the number of cases.  If you do not have the
+memory and patience for this, consider using a random sample of your data
+for this procedure.
+
+
+
+<p><span class="runinhead">Cluster Number </span> 
+Select the variable holding the cluster membership number.  Typically the values
+range from 1 to K, where K is the number of clusters, however, gaps are allowed
+and will be treated as empty clusters.
+</p>
+
+<p><span class="runinhead">Result Variables</span> Enter names
+for variables to hold the number of the next best cluster for each case
+and for the silhouette value.  Existing values, if any, will be overwritten.
+<p class="bullet">&bull; The silhouette value range is from -1 to 1 with values near 1
+indicating that the case is well placed and small or negative values indicating
+that it is not.
+
+<p><span class="runinhead">Dissimilarity Measure</span> Select the measure to
+be used in calculating the dissimilarities between cases and, hence, the 
+silhouette scores.  Normally this would be consistent
+with the measure used to calculate the clusters, but this procedure does not
+provide all of the many different clustering measures available in Statistics.
+<p class="bullet">&bull; All the clustering variables must be numeric except for
+the Gower measure.
+
+<p><span class="runinhead">Euclidean</span> is standard Euclidean distance
+<p><span class="runinhead">Absolute Difference </span>is the sum of the absolute values of the variable differences
+<p><span class="runinhead">Minkowski </span>is the pth root of the sum of the pth power of the absolute differences.  Enter
+the power to use below.
+<p><span class="runinhead">Gower </span>distinguishes variables according to the measurement level.  Scale variables
+are measured by absolute difference with each difference divided by the variable
+range.  Ordinal variables are renumbered so that the
+values range from 1 to M, where M is the number of distinct values and then treated
+as scale.  Nominal variable differences are 0 or 1 according to whether the values are
+equal or not.
+<p><span class="runinhead">Maximum</span> is the maximum variable difference.  It is never rescaled, but the exclusion
+option for missing values can be used.
+<h2>Options</h2>
+<p><span class="runinhead">Renumber ordinal variables</span> Use this option to
+specify that ordinal variables should be recoded to 1:M (see above).  This is done automatically
+if using the Gower measure.
+<p><span class="runinhead">Weight variables </span> Check this box to specify a weight
+for each clustering variable.  Enter a blank-separated list of weights in this field.
+The weights must be nonnegative.
+
+<p><span class="runinhead"> Missing Values </span> There are three missing value
+treatments available to control how the difference between a pair of cases is calculated
+when the cases contain missing values.
+<p><span class="runinhead">Rescale measure in proportion </span> causes the calculated
+difference to be scaled up according to the number of variable differences that cannot
+be calculated.  For example, if there are three clustering variables and one pair cannot
+be calculated because the value is missing in either or both cases, the calculated value
+is multiplied by 3/(3-1).
+<p><span class="runinhead"> Use measure without rescaling</span> uses the value
+calculated from the available pairs.
+<p><span class="runinhead">Exclude case if any missing</span> causes the
+distance to be missing if any variables are missing.
+
+<h2>Output</h2>
+<p>Viewer output always includes a summary table of the silhouette data.  In addition,
+three types of plots are available.
+<p><span class="runinhead">Histogram by cluster </span> produces a paneled plot
+showing the distribution of the silhouette values for each cluster.  In horizontal orientation,
+all the plots appear on a single row.  If there are many clusters, using vertical orientation
+may be preferable as it produces one plot per row.
+<p><span class="runinhead"> 3-D bar of silhouettes by assigned and next best clusters </span> 
+Check this box to produce a 3-d bar chart with the assigned and next best cluster numbers
+on the x and z axes, respectively, and the mean silhouette score on the y axis.
+
+<p><span class="runinhead">3-D bar of counts </span> Check this box to produce a
+3-d bar chart with the assigned and next best clusters on the x and z axes and the percentage
+of cases on the y axis.  The percentages sum to 100 for each assigned cluster.
+
+
+<h2>Additional Features</h2>
+<p>
+This dialog generates syntax for the STATS CLUS SIL extension command. To display help for this command,
+run the following syntax:
+</p>
+<p class="codeblock">STATS CLUS SIL /HELP.</p>
+
+<h2>Requirements</h2>
+This command requires the Python Essentials and the STATS CLUS SIL extension command.
+You can download these from the SPSS Community at www.ibm.com/developerworks/spssdevcentral.
+

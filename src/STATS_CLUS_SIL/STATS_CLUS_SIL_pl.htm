@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>Statystyka sylwetki dla analizy skupień</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>Statystyka sylwetki dla analizy skupień</h1>
+Za pomocą tej procedury można utworzyć statystyki sylwetki w przypadku wyników analizy skupień, które mogą być przydatne podczas oceniania wyników grupowania.
+<p>
+Ta procedura wymaga obecności obserwacji w pamięci, a czas jej wykonania jest proporcjonalny do kwadratu liczby obserwacji.  Jeśli użytkownik nie dysponuje wystarczającą ilością pamięci lub czasu, w tej procedurze należy rozważyć użycie próby losowej danych.
+
+
+
+<p><span class="runinhead">Numer skupienia</span> Wybierz zmienną zawierającą numer przynależności do skupień.  Zazwyczaj wartości zawierają się w przedziale od 1 do K, gdzie K to liczba skupień; dozwolone są jednak przerwy, które będą traktowane jako puste grupy.
+</p>
+
+<p><span class="runinhead">Zmienne wynikowe</span> Wprowadź nazwy zmiennych obejmujące numer kolejnego najlepszego skupienia w przypadku każdej obserwacji i wartości sylwetki.  Jeśli jakiekolwiek wartości istnieją, zostaną one nadpisane.
+<p class="bullet">&bull; Zakres wartości sylwetki zawiera się w przedziale od -1 do 1. Wartości zbliżone do 1 wskazują, że obserwacja jest prawidłowo rozmieszczona, a niewielkie lub ujemne wartości wskazują na nieprawidłowe umieszczenie obserwacji.
+
+<p><span class="runinhead">Miara niepodobieństwa</span> Wybierz miarę, która zostanie użyta w celu obliczania niepodobieństw między obserwacjami i, jednocześnie, w przypadku ocen sylwetek.  Standardowo miara ta byłaby spójna z miarą użytą w celu obliczania skupień, ale ta procedura nie zapewnia wszystkich, różnorodnych miar grupowania dostępnych w programie Statistics.
+<p class="bullet">&bull; Wszystkie zmienne grupowania muszą być liczbowe, wyjątkiem jest miara Gowera.
+
+<p><span class="runinhead">Euklidesowa</span> jest standardową odległością euklidesową
+<p><span class="runinhead">Różnica bezwzględna </span>to suma wartości bezwzględnych różnic zmiennej
+<p><span class="runinhead">Minkowski </span>to pierwiastek stopnia p sumy różnic bezwzględnych podniesionych do potęgi p.  Wprowadź wartość potęgi, która zostanie zastosowana poniżej.
+<p>Miara <span class="runinhead">Gower </span>rozróżnia wartości wg poziomu pomiaru.  Zmienne ilościowe są mierzone wg różnicy bezwzględnej, a każda różnica jest dzielona przez zakres zmiennej.  Zmienne porządkowe są przenumerowywane, aby zakres wartości zawierał się w przedziale od 1 do M, gdzie M stanowi liczbę różnych wartości, które są następnie traktowane jako skala.  Różnice zmiennych nominalnych zawierają się w przedziale od 0 do 1 zależnie od tego, czy wartości są równe czy nie.
+<p><span class="runinhead">Maksimum</span> oznacza największą różnicę zmiennych.  Skalowanie nigdy nie jest stosowane, ale można użyć opcji wykluczenia w przypadku brakujących wartości.
+<h2>Opcje</h2>
+<p><span class="runinhead">Przenumeruj zmienne porządkowe</span> Za pomocą tej opcji można określić rejestrowanie zmiennych porządkowych do 1:M (patrz powyżej).  To działanie jest wykonywane automatycznie w przypadku korzystania z miary Gower.
+<p><span class="runinhead">Zmienne ważące</span> Zaznacz to pole wyboru, aby określić wagę każdej zmiennej grupowania.  W tym polu wprowadź listę wartości wag oddzielonych spacjami.
+Wagi muszą być wartościami nieujemnymi.
+
+<p><span class="runinhead"> Brakujące wartości </span> Dostępne są trzy sposoby obsługi brakujących wartości. Pozwalają one na sterowanie obliczaniem różnicy między parą obserwacji obliczonych, gdy obserwacje zawierają brakujące wartości.
+<p><span class="runinhead">Przeskaluj miarę proporcjonalnie </span> Użycie tej opcji powoduje przeskalowanie obliczonej różnicy zgodnie z liczbą różnic zmiennych, których nie można obliczyć.  Przykładowo, jeśli istnieją trzy zmienne grupowania i nie można obliczyć jednej pary z powodu braku wartości w jednej obserwacji lub w obydwóch, obliczona wartość jest mnożona przez 3/(3-1).
+<p><span class="runinhead"> Użyj miary bez przeskalowania</span> używa wartości obliczonej na podstawie dostępnych par.
+<p><span class="runinhead">Pomiń obserwacje, w których brakuje jakichkolwiek</span> powoduje brak odległości, jeśli brakuje jakichkolwiek zmiennych.
+
+<h2>Wyniki</h2>
+<p>Raport wynikowy zawsze zawiera tabelę podsumowań danych sylwetki.  Ponadto dostępne są trzy typy wykresów.
+<p><span class="runinhead">Histogram według skupień </span> powoduje utworzenie wykresu panelowego zawierającego rozkład wartości sylwetki dla każdego skupienia.  W orientacji poziomej wszystkie wykresy są wyświetlane w jednym wierszu.  W przypadku wielu skupień użycie orientacji pionowej może być lepszym rozwiązaniem, ponieważ powoduje utworzenie jednego wykresu na wiersz.
+<p><span class="runinhead"> Wykres słupkowy trójwymiarowy wg przypisanego i kolejnego najlepszego skupienia</span> Zaznacz to pole, aby utworzyć wykres słupkowy trójwymiarowy z liczbami przypisanych i kolejnych najlepszych skupień ma osiach x i z oraz zawierającego wynik średniej sylwetki na osi y.
+
+<p><span class="runinhead"> Wykres słupkowy trójwymiarowy liczebności</span> Zaznacz to pole, aby utworzyć wykres słupkowy trójwymiarowy z przypisanymi i kolejnymi najlepszymi skupieniami ma osiach x i z oraz zawierającego wartość procentową obserwacji na osi y.  Sumą wartości procentowych w przypadku każdego przypisanego skupienia musi być 100.
+
+
+<h2>Funkcje dodatkowe</h2>
+<p>
+To okno dialogowe generuje składnię dla komendy rozszerzającej STATS CLUS SIL. Aby wyświetlić pomoc dotyczącą tej komendy, uruchom następującą komendę:
+</p>
+<p class="codeblock">STATS CLUS SIL /HELP.</p>
+
+<h2>Wymagania</h2>
+Ta komenda wymaga dodatku Python Essentials oraz komendy rozszerzającej STATS CLUS SIL.
+Można je pobrać z serwisu SPSS Community pod adresem www.ibm.com/developerworks/spssdevcentral/.
+

@@ -1,177 +1,112 @@
-#/***********************************************************************
-# * Licensed Materials - Property of IBM 
-# *
-# * IBM SPSS Products: Statistics Common
-# *
-# * (C) Copyright IBM Corp. 1989, 2014
-# *
-# * US Government Users Restricted Rights - Use, duplication or disclosure
-# * restricted by GSA ADP Schedule Contract with IBM Corp. 
-# ************************************************************************/
-
-# NLS_ENCODING=UTF-8
-# IBMUPYTH
-
-
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR ORGANIZATION
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Translations template for PROJECT.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 #
+
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-21 17:51+China Standard Time\n"
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-10-11 00:55-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: ENCODING\n"
-"Generated-By: pygettext.py 1.5\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Globalization Pipeline\n"
 
-
-#: STATS_CLUS_SIL.py:121
 msgid "Absolute Difference"
-msgstr ""
-"Абсолютная разность"
+msgstr "Абсолютная разность"
 
-#: STATS_CLUS_SIL.py:121
 msgid "Euclid"
-msgstr ""
-"Евклид"
+msgstr "Евклид"
 
-#: STATS_CLUS_SIL.py:121 STATS_CLUS_SIL.py:460
 msgid "Maximum"
-msgstr ""
-"Максимум"
+msgstr "Максимум"
 
-#: STATS_CLUS_SIL.py:122
 msgid "Gower"
-msgstr ""
-"Гауэр"
+msgstr "Гауэр"
 
-#: STATS_CLUS_SIL.py:128
 msgid "All variables must be numeric for the selected dissimilarity measure."
-msgstr ""
-"Для выбранной меры различия все переменные должны быть числовыми."
+msgstr "Для выбранной меры различия все переменные должны быть числовыми."
 
-#: STATS_CLUS_SIL.py:133
 msgid "The Minkowski measure requires the power to be specified"
-msgstr ""
-"Для меры Минковского нужно задать показатель степени"
+msgstr "Для меры Минковского нужно задать показатель степени"
 
-#: STATS_CLUS_SIL.py:170
 msgid "At least one variable is entirely missing"
-msgstr ""
-"По крайней мере одна переменная полностью отсутствует"
+msgstr "По крайней мере одна переменная полностью отсутствует"
 
-#: STATS_CLUS_SIL.py:174
 msgid "The number of variable weights must be equal to the number of variables"
 msgstr ""
 "Количество весов переменных должно быть равно количеству самих переменных"
 
-#: STATS_CLUS_SIL.py:313
 msgid ""
-"Silhouettes cannot be computed: either there is only one cluster\n"
-"or every cluster is size 1"
+"Silhouettes cannot be computed: either there is only one cluster\nor every "
+"cluster is size 1"
 msgstr ""
-"Невозможно вычислить силуэты: возможно, существует только один кластер\n"
-"или у всех кластеров размер равен 1"
+"Невозможно вычислить силуэты: возможно, существует только один кластер\nили у "
+"всех кластеров размер равен 1"
 
-#: STATS_CLUS_SIL.py:398
 msgid "The cluster number variable cannot be included as a clustering variable"
 msgstr ""
 "Переменная числа кластеров не может включаться как переменная кластеризации"
 
-#: STATS_CLUS_SIL.py:403
-msgid "There are duplicate or undefined variables specified.  Note that variable names are case sensitive"
+msgid ""
+"There are duplicate or undefined variables specified.  Note that variable "
+"names are case sensitive"
 msgstr ""
-"Заданы дублированные или неопределенные переменные. Обратите внимание на то, что имена переменных зависят от регистра"
+"Заданы дублированные или неопределенные переменные. Обратите внимание на то, "
+"что имена переменных зависят от регистра"
 
-#: STATS_CLUS_SIL.py:420 STATS_CLUS_SIL.py:501
 msgid "Next Best Cluster"
-msgstr ""
-"Следующий лучший кластер"
+msgstr "Следующий лучший кластер"
 
-#: STATS_CLUS_SIL.py:421
 msgid "Silhouette"
-msgstr ""
-"Силуэт"
+msgstr "Силуэт"
 
-#: STATS_CLUS_SIL.py:450
 msgid "Total"
-msgstr ""
-"Всего"
+msgstr "Всего"
 
-#: STATS_CLUS_SIL.py:456
 msgid "Silhouette Statistics"
-msgstr ""
-"Статистика силуэтов"
+msgstr "Статистика силуэтов"
 
-#: STATS_CLUS_SIL.py:458
 msgid "Cluster"
-msgstr ""
-"Кластеризовать"
+msgstr "Кластеризовать"
 
-#: STATS_CLUS_SIL.py:459
 msgid "Statistics"
-msgstr ""
-"Статистику"
+msgstr "Статистику"
 
-#: STATS_CLUS_SIL.py:460
 msgid "Case Count"
-msgstr ""
-"Число наблюдений"
+msgstr "Число наблюдений"
 
-#: STATS_CLUS_SIL.py:460
 msgid "Mean"
-msgstr ""
-"Среднее значение"
+msgstr "Среднее значение"
 
-#: STATS_CLUS_SIL.py:460
 msgid "Minimum"
-msgstr ""
-"Минимум"
+msgstr "Минимум"
 
-#: STATS_CLUS_SIL.py:467
 msgid "Histogram of Silhouettes"
-msgstr ""
-"Гистограмма силуэтов"
+msgstr "Гистограмма силуэтов"
 
-#: STATS_CLUS_SIL.py:468
 msgid "Dissimilarity measure = %s"
-msgstr ""
-"Мера различия = %s"
+msgstr "Мера различия = %s"
 
-#: STATS_CLUS_SIL.py:469
 msgid "Silhouettes by Cluster"
-msgstr ""
-"Силуэты по кластеру"
+msgstr "Силуэты по кластеру"
 
-#: STATS_CLUS_SIL.py:486
 msgid "Mean Silhouette by Cluster"
-msgstr ""
-"Средний силуэт по кластеру"
+msgstr "Средний силуэт по кластеру"
 
-#: STATS_CLUS_SIL.py:499
 msgid "Assigned Cluster"
-msgstr ""
-"Назначенный кластер"
+msgstr "Назначенный кластер"
 
-#: STATS_CLUS_SIL.py:500
 msgid "Percentage of Assigned Cluster"
-msgstr ""
-"Процентная доля назначенного кластера"
+msgstr "Процентная доля назначенного кластера"
 
-#: STATS_CLUS_SIL.py:502
 msgid "Distribution of Next Best Clusters"
-msgstr ""
-"Распределение следующих лучших кластеров"
+msgstr "Распределение следующих лучших кластеров"
 
-#: STATS_CLUS_SIL.py:580
 msgid "---"
-msgstr ""
-"---"
-
-
-
+msgstr "---"

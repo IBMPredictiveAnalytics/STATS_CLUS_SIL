@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <title>クラスタ分析用のシルエット統計量</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>クラスタ分析用のシルエット統計量</h1>
+この手順では、クラスタリングの結果を評価する際に役立つ、クラスタ分析結果用のシルエット統計量を作成します。
+<p>
+この手順ではケースをメモリに書き込む必要があり、実行時間はケース数の 2 乗に比例します。このため、メモリや時間に余裕がない場合は、この手順でデータの無作為抽出を使用することを検討してください。
+
+
+
+<p><span class="runinhead">クラスタ番号:</span> 所属クラスタ番号を保持する変数を選択します。通常、値の範囲は 1 から K (K はクラスタの数) ですが、ギャップが許容され、空のクラスタとして処理されます。
+</p>
+
+<p><span class="runinhead">結果変数:</span> 各ケースおよびシルエット値の次に最適なクラスタの番号を保持する変数の名前を入力します。既存の値は上書きされます。
+<p class="bullet">&bull; シルエット値の範囲は -1 から 1 です。値が 1 に近い場合はケースの配置が適切であることを示し、値が小さいか負数である場合は適切でないことを示します。
+
+<p><span class="runinhead">非類似度:</span> ケース間の非類似度、つまりシルエット スコアを計算する際に使用する尺度を選択します。通常これは、クラスタの計算に使用される尺度と同じになりますが、この手順では Statistics で使用可能な多数のクラスタリング尺度のすべてを提供しているわけではありません。
+<p class="bullet">&bull; クラスタ変数は、ガワー尺度を除いてすべて数値型であることが必要です。
+
+<p><span class="runinhead">ユークリッド:</span> 標準のユークリッド距離です。
+<p><span class="runinhead">絶対差:</span> 変数の差の絶対値の和です。
+<p><span class="runinhead">ミンコフスキー:</span> 絶対差を p 乗した和の p 乗根です。使用するべき乗を下で入力してください。
+<p><span class="runinhead">ガワー:</span> 尺度に従って変数を区別します。スケール変数は、絶対差によって測定されます (それぞれの差は変数の範囲で除算されます)。順序型変数は、値が 1 から M (M は異なる値の数) の範囲になるように再付番されたうえで、スケールとして扱われます。名義型変数の差は、値が等しいかどうかに応じて 0 または 1 となります。
+<p><span class="runinhead">最大:</span> 最大の変数の差です。再調整されることはありませんが、欠損値の除外オプションを使用できます。
+<h2>オプション</h2>
+<p><span class="runinhead">順序型変数のつけ直し:</span> 順序型変数を 1:M (上記参照) に再コード化するように指定する場合は、このオプション使用します。ガワー尺度を使用する場合は、この処理が自動的に行われます。
+<p><span class="runinhead">変数に重みを付ける:</span> 各クラスタ変数に重みを指定する場合は、このボックスにチェック マークを付けます。このフィールドには、空白で区切った重みのリストを入力してください。
+この重みに負の値を指定することはできません。
+<p><span class="runinhead">欠損値:</span> ケースに欠損値が含まれている場合に、ペアになったケースの差の計算方法を制御するための欠損値処理が 3 種類あります。
+<p><span class="runinhead">比例して尺度を再調整:</span> 計算不可能な変数の差の数に応じて、計算された差が拡大されます。例えば、3 つのクラスタ変数があり、1 つのペアがケースの一方または両方に欠損値があるために計算できない場合は、計算された値が 3/(3-1) で乗算されます。
+<p><span class="runinhead">再調整なしで尺度を使用:</span> 計算可能なペアから計算された値が使用されます。
+<p><span class="runinhead">欠損値があるケースを除外:</span> 変数が欠損している場合に距離を欠損させます。
+
+<h2>出力</h2>
+<p>ビューア出力には、常にシルエット データの集計表が表示されます。さらに、3 種類のプロットを表示できます。
+<p><span class="runinhead">クラスタ別ヒストグラム:</span> 各クラスタのシルエット値の分布を示すパネル化されたプロットが作成されます。水平方向では、すべてのプロットが 1 行に表示されます。クラスタが多数ある場合は、垂直方向を使用すると 1 行に 1 つのプロットが作成されて見やすくなります。
+<p><span class="runinhead">割り当てられたクラスタと次に最適なクラスタ別のシルエットの 3-D 棒グラフ:</span> このボックスをオンにすると、割り当てられたクラスタ番号と次に最適なクラスタ番号をそれぞれ X 軸と Z 軸に示し、平均シルエット スコアを Y 軸に示した 3-D 棒グラフが作成されます。
+
+<p><span class="runinhead">度数の 3-D 棒グラフ:</span> このボックスをオンにすると、割り当てられたクラスタと次に最適なクラスタを X 軸と Z 軸に示し、ケースのパーセンテージを Y 軸に示した 3-D 棒グラフが作成されます。割り当てられたクラスタごとに、パーセンテージの合計が 100 になります。
+
+<h2>その他の機能</h2>
+<p>
+このダイアログは、STATS CLUS SIL 拡張コマンドのシンタックスを生成します。このコマンドのヘルプを表示するには、次のシンタックスを実行します。
+</p>
+<p class="codeblock">STATS CLUS SIL /HELP.</p>
+
+<h2>要件</h2>
+このコマンドを使用するには、Python Essentials および STATS CLUS SIL 拡張コマンドが必要です。SPSS コミュニティー www.ibm.com/developerworks/spssdevcentral からダウンロードできます。
+

@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+<title>Estadísticos de siluetas para análisis de clústeres</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>Estadísticos de siluetas para análisis de clústeres</h1>
+Este procedimiento genera estadísticos de silueta para resultados de análisis de clústeres que pueden resultar de utilidad en la evaluación de los resultados de la agrupación en clúster.
+<p>
+Este procedimiento requiere que los casos estén en la memoria, y el tiempo de ejecución es proporcional al cuadrado del número de casos.  Si no tiene la memoria ni la paciencia para ello, considere el uso de una muestra aleatoria de los datos para este procedimiento.
+
+
+
+<p><span class="runinhead">Número de clúster</span> Seleccione la variable que contiene el número de clúster de pertenencia.  Normalmente, los valores van de 1 a K, donde K es el número de clústeres, aunque se permiten espacios vacíos, que se tratarán como clústeres vacíos.
+</p>
+
+<p><span class="runinhead">Variables de resultado</span> Especifique nombres de variables que contengan el número del siguiente mejor clúster para cada caso y para el valor de silueta.  Los valores existentes, de haber alguno, se sobrescribirán.
+<p class="bullet">&bull; El rango de valores de la silueta es de -1 a 1 con valores cercanos a 1 que indican que el caso está bien colocado o valores negativos que indican que no lo está.
+
+<p><span class="runinhead">Medida de disimilaridad</span> Seleccione la medida que se va a utilizar para calcular las disimilaridades entre los casos y, por tanto, de las puntuaciones de las siluetas.  Generalmente, esto debería ser coherente con la medida utilizada para calcular los clústeres, pero este procedimiento no proporciona todas las muchas y distintas medidas de agrupación en clúster que están disponibles en Statistics.
+<p class="bullet">&bull; Todas las variables de clúster deben ser numéricas, excepto la medida Gower.
+
+<p><span class="runinhead">Euclídea</span> es una distancia euclídea estándar.
+<p><span class="runinhead">Diferencia absoluta</span> es la suma de valores absolutos de las diferencias de variables.
+<p><span class="runinhead">Minkowski</span> es la raíz p-ésima de la suma de la potencia p-ésima de las diferencias absolutas.  Especifique la potencia que va a utilizar a continuación.
+<p><span class="runinhead">Gower</span> distingue las variables según el nivel de medición.  Las variables de escala se miden por la diferencia absoluta, y cada diferencia se divide por el rango de variable.  Las variables ordinales se vuelven a numerar de modo que los valores van de 1 a M, donde M es el número de valores distintos y después se tratan como escala.  Las diferencias de las variables nominales pueden ser 0 o 1 en función de si los valores son iguales o no.
+<p><span class="runinhead">Máximo</span> es la máxima diferencia de variable.  No se vuelve a escalar nunca, pero se puede utilizar la opción de exclusión de los valores perdidos.
+<h2>Opciones</h2>
+<p><span class="runinhead">Renumerar las variables ordinales</span> Utilice esta opción para especificar que las variables ordinales deben recodificarse a 1:M (ver información anterior).  Esto se realiza de manera automática si se utiliza la medida Gower.
+<p><span class="runinhead">Variables de ponderación</span> Marque esta casilla para especificar una ponderación para cada variable de clúster.  Especifique una lista de ponderaciones separadas por un espacio en blanco en este campo.
+Las ponderaciones deben ser no negativas.
+
+<p><span class="runinhead">Valores perdidos</span> Hay disponibles tres tratamientos de valores perdidos para controlar cómo se calcula la diferencia entre un par de casos cuando los casos contienen valores perdidos.
+<p><span class="runinhead">Cambiar la escala de la medida en proporción</span> hace que la diferencia calculada se escale en función del número de diferencias de variable que no se puede calcular.  Por ejemplo, si hay tres variables de clúster y un par no se puede calcular porque falta el valor en uno de ellos o en los dos casos, el valor calculado se multiplica por 3/(3-1).
+<p><span class="runinhead">Utilizar la medida sin cambiar la escala</span> utiliza el valor calculado de los pares disponibles.
+<p><span class="runinhead">Excluir caso si falta alguna</span> hace que la distancia falte si falta alguna variable.
+
+<h2>Resultado</h2>
+<p>El resultado del visor siempre incluye una tabla resumen de los datos de silueta.  Además, hay tres tipos de gráficos disponibles.
+<p><span class="runinhead">Histograma por clúster</span> genera un gráfico panelado que muestra la distribución de los valores de silueta para cada clúster.  Si la orientación es horizontal, todos los gráficos se muestran en una única fila.  Si hay muchos clústeres, se recomienda la orientación vertical ya que genera un gráfico por fila.
+<p><span class="runinhead">Barra 3D de siluetas por clústeres asignados y siguiente mejor clúster</span> Marque esta casilla para generar un gráfico de barras 3D con los números de clúster asignados y los números de siguiente mejor clúster en los ejes x y z, respectivamente, y la puntuación media de siluetas en el eje y.
+
+<p><span class="runinhead">Barra 3D de recuentos</span> Marque esta casilla para generar un gráfico de barras 3D con los clústeres asignados y el siguiente mejor clúster en los ejes x y z y el porcentaje de casos en el eje y.  Los porcentajes suman hasta 100 para cada clúster asignado.
+
+
+<h2>Características adicionales</h2>
+<p>
+Este cuadro de diálogo genera la sintaxis del comando de extensión STATS CLUS SIL. Para mostrar la ayuda de este comando, ejecute la siguiente sintaxis:
+</p>
+<p class="codeblock">STATS CLUS SIL /HELP.</p>
+
+<h2>Requisitos</h2>
+Este comando requiere Python Essentials y el comando de extensión STATS CLUS SIL.
+Puede descargarlos desde la Comunidad de SPSS en www.ibm.com/developerworks/spssdevcentral.
+

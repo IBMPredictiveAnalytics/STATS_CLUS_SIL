@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+<title>군집분석의 실루엣 통계</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>군집분석의 실루엣 통계</h1>
+이 프로시저는 군집 결과를 평가하는 데 유용한
+군집분석 결과에 대한 실루엣 통계를 생성합니다.
+<p>
+이 프로시저를 사용하려면 케이스를 메모리에 유지해야 하며
+실행 시간은 케이스 수의 제곱에 비례해야 합니다. 메모리가 없는 경우
+이 프로시저를 위해 데이터 임의 표본을 사용하는 것을
+고려해 보십시오. 
+<p><span class="runinhead">군집 수</span>
+소속군집 수를 포함하는 변수를 선택하십시오. 일반적으로 값은 1에서 1000 사이입니다.
+여기서 K는 군집 수이지만
+갭이 허용되며 이는 빈 군집으로 처리됩니다.
+</p>
+
+<p><span class="runinhead">결과 변수</span> 실루엣 값
+및 각 케이스의 다음 최적의 군집 수를 유지하려면
+변수의 이름을 입력하십시오. 기존 값(있는 경우)은 덮어써집니다.
+<p class="bullet">&bull; 실루엣 값은 -1에서 1 사이이며
+값이 1에 가까우면 케이스가 제대로 배치되었음을 나타내고
+1보다 작거나 음수이면 케이스가 제대로 배치되지 않았음을 나타냅니다. <p><span class="runinhead">비유사성 측도</span> 케이스 간의 비유사성
+및 실루엣 점수를 계산하는 데 사용할
+측도를 선택하십시오. 일반적으로 군집을 계산하는 데 사용되는
+측도와 일치하지만 이 프로시저는 Statistics에서 사용 가능한 다양한
+군집 측도 중 일부를 제공하지 않습니다.
+<p class="bullet">&bull; Gower 측도를 제외한 모든 군집 변수는
+숫자여야 합니다. <p><span class="runinhead">유클리디안</span>은 표준 유클리디안 거리입니다.
+<p><span class="runinhead">절대 차이</span>는 변수 차이의 절대값을 합한 값입니다.
+<p><span class="runinhead">Minkowski</span>는 절대 차이의 pth 거듭제곱 합에 대한 pth 루트입니다. 아래에 사용할 거듭제곱을 입력하십시오.
+<p><span class="runinhead">Gower</span>는 측정 수준에 따라 변수를 구분합니다. 척도 변수는
+각 차이가 변수 범위로 나뉜
+절대 차이로 측정됩니다. 순서형 변수의 번호는
+1부터 M까지의 범위로 다시 매겨집니다.
+여기서 M은 구별된 값의 수이며 척도로 처리됩니다. 명목형 변수 차이는 값이 같은지 여부에 따라
+0 또는 1입니다.
+<p><span class="runinhead">최대값</span>은 최대 변수 차이입니다. 재척도화되지는 않지만
+결측값에 대한 제외 옵션을 사용할 수 있습니다.
+<h2>옵션</h2>
+<p><span class="runinhead">순서형 변수 재코딩</span> 순서형 변수가 1:M으로 재코딩되도록 지정하려면 이 옵션을 사용하십시오(위 내용 참조). Gower 측도를 사용할 경우
+자동으로 완료됩니다.
+<p><span class="runinhead">변수에 가중값을 줌</span> 각 군집 변수에 대한 가중값을 지정하려면
+이 상자를 선택하십시오. 이 필드의 가중값 목록을 공백으로 구분하여 입력하십시오.
+가중값은 음수가 아니어야 합니다. <p><span class="runinhead">결측값</span> 케이스에 결측값이 포함된 경우
+케이스 쌍 간의 차이를 계산하는 방법을 제어하는 데
+사용할 수 있는 결측값 처리 방식은 세 가지입니다.
+<p><span class="runinhead">비율의 측도 조정</span>은 계산할 수 없는 변수 차이 수에 따라
+계산된 차이를 척도화합니다. 예를 들어, 세 개의 군집 변수가 있고 케이스 중 하나 또는 둘 모두에서
+값이 누락되어 한 쌍을 계산할 수 없으면 계산된 값에 3/(3-1)을 곱합니다.
+<p><span class="runinhead">재척도화 없이 측도 사용</span>에서는 사용 가능한 쌍에서 계산된 값을 사용합니다.
+<p><span class="runinhead">결측값이 있는 경우 케이스 제외</span>는 누락된 변수가 있는 경우
+거리를 결측값으로 처리합니다. <h2>출력결과</h2>
+<p>뷰어 출력에는 항상 실루엣 데이터의 요약표가 포함됩니다. 또한
+세 가지 유형의 도표를 사용할 수 있습니다.
+<p><span class="runinhead">군집별 히스토그램</span>은 각 군집에 대한 실루엣 값의 분포를 보여주는
+패널형 도표를 생성합니다. 수평 방향에서는
+모든 도표가 하나의 행으로 나타납니다. 군집이 너무 많으면 수직 방향을 사용하여
+행당 도표를 하나씩 생성하는 것이 좋습니다.
+<p><span class="runinhead">지정된 실루엣과 다음 최적 군집의 3차원 막대</span>
+X축 및 Z축에서 지정된 다음 최적의 군집 번호로 3차원 막대 도표를 각각 생성한 다음
+Y축에서 평균 실루엣 점수를 생성하려면 이 상자를 선택하십시오. <p><span class="runinhead">빈도의 3차원 막대 </span> X축 및 Z축에서 지정된 다음 최적의 군집을 3차원 막대 도표를 생성한 다음
+Y축에서 케이스 퍼센트를 생성하려면 이 상자를 선택하십시오. 지정된 각 군집의 퍼센트의 합은 100입니다. <h2>추가 기능</h2>
+<p>
+이 대화 상자는 STATS CLUS SIL 확장 명령에 대한 구문을
+생성합니다. 이 명령에 대한 도움말을 표시하려면 다음 구문을 실행하십시오.
+</p>
+<p class="codeblock">STATS CLUS SIL /HELP.</p>
+
+<h2>요구 사항</h2>
+이 명령문에는 Python Essentials 및 STATS CLUS SIL 확장 명령문이 필요합니다.
+SPSS Community(www.ibm.com/developerworks/spssdevcentral)에서
+  다운로드할 수 있습니다. 
+

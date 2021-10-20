@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+<title>Statistiche silhouette per Analisi cluster</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>Statistiche silhouette per Analisi cluster</h1>
+Questa procedura produce statistiche silhouette per i risultati dell'analisi cluster che possono essere utili nella valutazione dei risultati del clustering.
+<p>
+La procedura richiede che i casi siano in memoria e il tempo di esecuzione è proporzionale al quadrato del numero di casi.  Se i casi non sono in memoria, prendere in considerazione l'utilizzo di un campione casuale di dati per questa procedura.
+
+
+
+<p><span class="runinhead">Numero cluster</span> Selezionare la variabile che contiene il numero di appartenenza del cluster.  Generalmente i valori vanno da 1 a K, dove K è il numero di cluster, tuttavia, sono consentite delle interruzioni che verranno trattate come cluster vuoti.
+</p>
+
+<p><span class="runinhead">Variabili risultato</span> Immettere i nomi per le variabili per contengono il numero del successivo miglior cluster per ogni caso e per il valore silhouette.  Eventuali valori esistenti verranno sovrascritti.
+<p class="bullet">&bull; L'intervallo di valori silhouette va da -1 a 1 con valori vicini a 1 che indicano che il caso è ben collocato e valori piccoli o negativi che indicano che non lo è.
+
+<p><span class="runinhead">Misura di dissimilarità</span> Selezionare la misura da utilizzare per calcolare le dissimilarità tra i casi e, di conseguenza, i punteggi silhouette.  Generalmente è congruente con la misura utilizzata per calcolare i cluster, ma questa procedura non fornisce tutte le diverse misure di clustering disponibili in Statistics.
+<p class="bullet">&bull; Tutte le variabili di clustering devono essere numeriche tranne che per la misura di Gower.
+
+<p><span class="runinhead">Euclidea</span> è la distanza euclidea standard
+<p><span class="runinhead">Differenza assoluta</span> è la somma dei valori assoluti delle differenze di variabile
+<p><span class="runinhead">Minkowski </span>è la radice p-esima della somma della p-esima potenza delle differenze assolute.  Immettere la potenza da utilizzare di seguito.
+<p><span class="runinhead">Gower </span>distingue le variabili in base al livello di misurazione.  Le variabili di scala sono misurate in base alla differenza assoluta con ogni differenza diviso per l'intervallo della variabile.  Le variabili ordinali sono rinumerate in modo che i valori sono compresi tra 1 e M, dove M è il numero di valori distinti e quindi considerate di scala.  Le differenze per la variabile nominale sono 0 o 1 a seconda che i valori siano uguali o no.
+<p><span class="runinhead">Massimo</span> è la differenza variabile massima.  Non ne viene mai modificata la scala, ma è possibile utilizzare l'opzione di esclusione per i valori mancanti.
+<h2>Opzioni</h2>
+<p><span class="runinhead">Rinumera le variabili ordinali</span> Utilizzare questa opzione per specificare che le variabili ordinali devono essere ricodificate a 1:M (si veda in precedenza).  Ciò avviene automaticamente se si utilizza la misura di Gower.
+<p><span class="runinhead">Variabili peso</span> Selezionare questa casella per specificare un peso per ogni variabile di clustering.  Immettere in questo campo un elenco dei pesi separati da spazi.
+I pesi devono essere non negativi.
+
+<p><span class="runinhead">Valori mancanti</span> Sono disponibili tre trattamenti dei valori mancanti per controllare il modo in cui è calcolata la differenza tra una coppia di casi quando i casi contengono valori mancanti.
+<p><span class="runinhead">Modifica scala misura in proporzione</span> Provoca la modifica della scala della differenza calcolata, in base al numero di differenze di variabili che non possono essere calcolate.  Ad esempio, se esistono tre variabili di clustering e una coppia non può essere calcolata poiché il valore è mancante in uno o entrambi i casi, il valore calcolato viene moltiplicato per 3/(3-1).
+<p><span class="runinhead">Utilizza misura senza modifica di scala</span> Utilizza il valore calcolato dalle coppie disponibili.
+<p><span class="runinhead">Escludi casi se mancano differenze</span> Provoca la mancanza della distanza se mancano delle variabili.
+
+<h2>Output</h2>
+<p>L'output del visualizzatore include sempre una tabella di riepilogo dei dati di silhouette.  Inoltre sono disponibili tre tipi di grafico.
+<p><span class="runinhead">Istogramma per cluster </span> Produce un grafico a pannelli che mostra la distribuzione dei valori silhouette per ogni cluster.  In orientamento orizzontale, tutti i grafici sono visualizzati su una riga singola.  Se ci sono molti cluster, l'utilizzo dell'orientamento verticale può essere preferibile, poiché produce un grafico per riga.
+<p><span class="runinhead">A barre 3-D di silhouette in base a cluster assegnato e successivo migliore</span> Selezionare questa casella per produrre un grafico a barre 3-D con i membri del cluster assegnato e del cluster successivo migliore sugli assi x e z, rispettivamente, e il punteggio medio di silhouette sull'asse y.
+
+<p><span class="runinhead">A barre 3-D di conteggi</span> Selezionare questa casella per produrre un grafico a barre 3-D con il cluster assegnato e il cluster successivo migliore sugli assi x e z e la percentuale di casi sull'asse y.  Le percentuali sommano a 100 per ciascun cluster assegnato.
+
+
+<h2>Funzioni aggiuntive</h2>
+<p>
+Questa finestra di dialogo genera la sintassi del comando di estensione STATS CLUS SIL. Per
+visualizzare la guida per questo comando, utilizzare la sintassi riportata di seguito:
+</p>
+<p class="codeblock">STATS CLUS SIL /HELP.</p>
+
+<h2>Requisiti</h2>
+Questa finestra di dialogo richiede Python Essentials e il comando di estensione STATS
+  CLUS SIL.
+Entrambi si possono scaricare da SPSS Community all'indirizzo www.ibm.com/developerworks/spssdevcentral.
+

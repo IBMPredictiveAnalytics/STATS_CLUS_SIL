@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+<title>Silhouettenstatistiken für die Clusteranalyse</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>Silhouettenstatistiken für die Clusteranalyse</h1>
+Diese Prozedur erstellt Silhouettenstatistiken für Clusteranalyseergebnisse, die bei der Beurteilung der Clustering-Ergebnisse nützlich sein können.
+<p>
+Für die Prozedur ist es erforderlich, dass sich die Fälle im Speicher befinden. Die Ausführungszeit
+ist proportional zum Quadrat der Anzahl der Fälle.  Wenn die Speichervoraussetzungen nicht
+gegeben sind und Ihnen der Vorgang zu zeitaufwendig ist, sollten Sie gegebenenfalls für diese Prozedur eine Zufallsstichprobe Ihrer Daten verwenden.
+
+
+
+<p><span class="runinhead">Clusternummer</span>
+Wählen Sie die Variable aus, die die Clusterzugehörigkeitsnummer enthält.  Die Werte
+liegen in der Regel im Bereich von 1 bis K, wobei K für die Anzahl der Cluster steht. Dabei sind Lücken zulässig und werden als leere Cluster behandelt.
+</p>
+
+<p><span class="runinhead">Ergebnisvariablen</span> Geben Sie Namen
+für Variablen ein, die die Nummer des nächstbesten Clusters für jeden der Fälle
+und für den Silhouettenwert enthalten sollen.  Wenn Werte bereits vorhanden sind, werden diese überschrieben.
+<p class="bullet">&bull; Silhouetten haben einen Wertebereich von -1 bis 1. Dabei geben Werte nahe 1 an, dass der Fall gut platziert ist und kleine oder negative Werte weisen darauf hin, dass dies nicht so ist.
+
+<p><span class="runinhead">Unähnlichkeitsmaß</span> Wählen Sie das Maß aus,
+das bei der Berechnung der Unähnlichkeiten zwischen den Fällen und damit der
+Silhouettenscores verwendet werden soll.  Normalerweise würde dieses dem Maß zur Berechnung der Cluster entsprechen, allerdings werden bei dieser Prozedur nicht alle der vielen verschiedenen in Statistics verfügbaren Clustering-Maße bereitgestellt.
+<p class="bullet">&bull; Alle Clustering-Variablen mit Ausnahme des Gower-Maßes
+müssen numerisch sein.
+
+<p><span class="runinhead">Euklidisch</span> Entspricht der euklidischen Standarddistanz
+<p><span class="runinhead">Absolute Differenz</span> Entspricht der Summe der absoluten Werte der Differenzen zwischen den Variablen
+<p><span class="runinhead">Minkowski </span>Entspricht der p-ten Wurzel aus der Summe der absoluten Differenzen zur p-ten Potenz.  Geben Sie unten die
+zu verwendende Potenz ein.
+<p><span class="runinhead">Gower </span>Unterscheidet Variablen nach dem Messniveau.  Metrische Variablen werden auf der Basis der absoluten Differenz gemessen, wobei jede Differenz durch den Bereich der Variable geteilt wird.  Ordinale Variablen werden umnummeriert, sodass die
+Werte in einem Bereich von 1 bis M liegen, wobei M für die Anzahl der unterschiedlichen Werte steht, und dann
+als metrische Variable behandelt.  Differenzen zwischen nominalen Variablen entsprechen 0 oder 1, abhängig davon, ob die Werte gleich sind oder nicht.
+<p><span class="runinhead">Maximum</span> ist die maximale Differenz zwischen Variablen.  Sie wird nicht neu skaliert, allerdings kann die Ausschlussoption für fehlende Werte verwendet werden.
+<h2>Optionen</h2>
+<p><span class="runinhead">Ordinale Variablen umnummerieren</span> Geben Sie mit dieser Option an, dass ordinale Variablen zu 1:M umcodiert werden sollen (siehe oben).  Wenn die Gower-Maßzahl verwendet wird, wird dies automatisch durchgeführt.
+<p><span class="runinhead">Gewichtungsvariablen</span> Wählen Sie dieses Feld aus, um für jede Clustervariable eine Gewichtung anzugeben.  Geben Sie in dieses Feld eine durch Leerzeichen getrennte Liste von Gewichtungen ein.
+Die Gewichtungen müssen nicht negativ sein.
+
+<p><span class="runinhead">Fehlende Werte</span> Für die Behandlung fehlender Werte stehen drei Vorgehensweisen
+zur Verfügung, anhand derer gesteuert werden kann, wie die Differenz zwischen einem Fallpaar berechnet werden soll, wenn die Fälle fehlende Werte enthalten.
+<p><span class="runinhead">Maß proportional neu skalieren</span> Bewirkt, dass die berechnete Differenz entsprechend der Anzahl der Differenzen zwischen Variablen, die nicht berechnet werden können, hochskaliert wird.  Wenn beispielsweise drei Clustervariable vorhanden sind und ein Paar kann nicht
+berechnet werden, weil der Wert in einem Fall oder in beiden Fällen fehlt, wird der berechnete Wert mit 3/(3-1) multipliziert.
+<p><span class="runinhead">Maß ohne Neuskalierung verwenden</span> Verwendet den aus den
+verfügbaren Paaren berechneten Wert.
+<p><span class="runinhead">Bei Fehlen Fall ausschließen</span> Bewirkt, dass bei Fehlen von Variablen auch die Distanz fehlt.
+
+<h2>Ausgabe</h2>
+<p>Die Viewer-Ausgabe enthält grundsätzlich eine Zusammenfassungstabelle der Silhouettendaten.  Außerdem stehen drei Typen von Diagrammen zur Verfügung.
+<p><span class="runinhead">Histogramm nach Cluster</span> Erstellt ein Diagramm mit Feldern,
+in dem die Verteilung der Silhouettenwerte der einzelnen Cluster dargestellt wird.  Bei horizontaler Ausrichtung
+werden alle Diagramme in einer einzigen Zeile dargestellt.  Wenn eine große Anzahl von Clustern vorhanden ist, ist unter Umständen die Verwendung der vertikalen Ausrichtung vorzuziehen, da hierbei jeweils ein Diagramm pro Zeile erstellt wird.
+<p><span class="runinhead">3-D-Balken von Silhouetten nach zugewiesenen und nächstbesten Clustern</span>
+Wählen Sie dieses Feld aus, um ein 3-D-Balkendiagramm mit der Nummer der zugewiesenen und nächstbesten Cluster auf der X-Achse bzw. Z-Achse sowie des mittleren Silhouettenscores auf der Y-Achse zu erstellen.
+
+<p><span class="runinhead">3-D-Balken für Häufigkeiten</span> Wählen Sie dieses Feld aus, um ein
+3-D-Balkendiagramm mit den zugewiesenen und nächstbesten Clustern auf der X-Achse bzw. Z-Achse sowie dem Prozentsatz der Fälle auf der Y-Achse zu erstellen.  Die Summe der Prozentsätze für jeden zugewiesen Cluster ergeben 100.
+
+
+<h2>Weitere Funktionen</h2>
+<p>
+Über dieses Dialogfeld wird Syntax für den Erweiterungsbefehl STATS CLUS SIL generiert. Führen Sie folgende Syntax aus, um Hilfe für diesen Befehl anzuzeigen:
+</p>
+<p class="codeblock">STATS CLUS SIL /HELP.</p>
+
+<h2>Anforderungen</h2>
+Für diesen Befehl sind Python Essentials und der Erweiterungsbefehl STATS CLUS SIL erforderlich.
+Sie können diese von der SPSS Community unter www.ibm.com/developerworks/spssdevcentral herunterladen.
+

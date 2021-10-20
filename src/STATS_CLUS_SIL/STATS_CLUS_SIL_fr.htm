@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+<title>Statistiques sur la silhouette pour l'analyse de cluster</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>Statistiques sur la silhouette pour l'analyse de cluster</h1>
+Cette procédure fournit des statistiques sur les silhouettes pour l'analyse de cluster qui peuvent être utiles à l'évaluation des résultats du cluster.
+<p>
+La procédure nécessite que des observations se trouvent dans la mémoire et que le délai d'exécution soit proportionnel au carré du nombre d'observations.  Vous pouvez toutefois choisir d'utiliser un échantillon aléatoire de vos données pour cette procédure.
+
+
+
+<p><span class="runinhead">Numéro de cluster :</span>
+Sélectionnez la variable qui contient le numéro d'appartenance à un cluster.  Les valeurs sont généralement comprises entre 1 et K, K étant le nombre de clusters. Toutefois, des écarts sont admis et sont traités comme clusters vides.
+</p>
+
+<p><span class="runinhead">Variables de résultat :</span> Attribuez un nom aux variables devant contenir le numéro de prochain meilleur cluster pour chaque observation et pour la valeur de silhouette.  Les valeurs existantes sont écrasées.
+<p class="bullet">&bull; La valeur de silhouette est comprise entre -1 et 1 avec des valeurs proches de 1 indiquant que l'observation est bien placée et des valeurs faibles ou négatives indiquant le contraire.
+
+<p><span class="runinhead">Mesure de dissimilarité :</span> Sélectionnez la mesure à utiliser lors du calcul des dissimilarités entre les observations et par conséquent, les scores de silhouettes.  En temps normal, cette mesure est cohérente avec celle utilisée pour calculer les clusters, mais cette procédure ne fournit pas l'ensemble des diverses mesures de cluster possibles disponibles dans Statistics.
+<p class="bullet">&bull; Toutes les variables de cluster doivent être numériques à l'exception de la mesure de Gower.
+
+<p><span class="runinhead">Distance euclidienne :</span> Distance euclidienne standard.
+<p><span class="runinhead">Différence absolue :</span> Somme des valeurs absolues des différences de variable.
+<p><span class="runinhead">Minkowski :</span> Racine pième de la somme de la puissance p des différences absolues.  Indiquez la puissance à utiliser ci-après.
+<p><span class="runinhead">Gower :</span> Fait la distinction entre les variables en fonction du niveau de mesure.  Les variables d'échelle sont mesurées par la différence absolue de chaque différence divisée par la plage de la variable.  Les variables ordinales sont renumérotées de manière qu'elles soient comprises entre 1 et M, M étant le nombre de valeurs distinctes, puis sont traitées en tant qu'échelle.  Les différences de variable nominale sont 0 ou 1 selon que les valeurs sont égales à zéro ou non.
+<p><span class="runinhead">Maximum :</span> Différence de variable maximum.  Celle-ci n'est jamais redimensionnée, mais l'option d'exclusion des valeurs manquantes est disponible.
+<h2>Options</h2>
+<p><span class="runinhead">Renuméroter les variables ordinales :</span> Utilisez cette option pour indiquer que les variables ordinales doivent être recodées en 1:M (voir ci-dessus).  Cette action est automatique si vous utilisez la mesure de Gower.
+<p><span class="runinhead">Variables de pondération :</span> Cochez cette case pour définir une pondération à chaque variable de cluster.  Entrez une liste de pondérations séparées par des espaces dans ce champ.
+Les pondérations doivent être positives.
+
+<p><span class="runinhead">Valeurs manquantes :</span> Il existe trois traitements de valeurs manquantes pour contrôler la manière dont est calculée la différence entre une paire d'observations lorsque ces dernières comportent des valeurs manquantes.
+<p><span class="runinhead">Redimensionner la mesure proportionnellement :</span> Cette option provoque le redimensionnement de la différence calculée en fonction du nombre de différences de variable ne pouvant pas être calculées.  Par exemple, si vous disposez de trois variables de cluster et qu'une paire ne peut pas être calculée en raison d'une valeur manquante dans l'une ou l'autre des observations, la valeur calculée est multipliée par 3/(3-1).
+<p><span class="runinhead">Utiliser la mesure sans redimensionnement :</span> Cette option utilise la valeur calculée à partir des paires disponibles.
+<p><span class="runinhead">Exclure l'observation en cas d'absence :</span> Cette option provoque l'absence de la distance si des variables sont manquantes.
+
+<h2>Sortie</h2>
+<p>La sortie du visualiseur inclut toujours une table récapitulative des données de silhouette.  En outre, trois types de tracés sont disponibles.
+<p><span class="runinhead">Histogramme par cluster :</span> Ce type génère un tracé en panels affichant la distribution des valeurs de silhouette pour chaque cluster.  En mode horizontal, tous les tracés sont affichés sur une seule ligne.  S'il y a beaucoup de clusters, le mode vertical peut être plus approprié, vu qu'il génère un tracé par ligne.
+<p><span class="runinhead">Barres 3-D des silhouettes par clusters affectés et prochains meilleurs clusters :</span>
+Cochez cette case pour tracer un graphique à barres 3D avec les numéros des clusters affectés et des prochains meilleurs clusters sur les axes des X et des Z, respectivement, et la moyenne du score de silhouette sur l'axe des Y.
+
+<p><span class="runinhead">Barre 3D des effectifs :</span> Cochez cette case pour tracer un graphique à barres 3D avec les clusters affectés et les prochains meilleurs clusters sur les axes des X et des Z et le pourcentage des observations sur l'axe des Y.  La somme des pourcentages est égale à 100 pour chaque cluster affecté.
+
+
+<h2>Fonctions supplémentaires</h2>
+<p>
+Cette boîte de dialogue génère une syntaxe pour la commande d'extension STATS CLUS SIL. Pour afficher l'aide de cette commande, exécutez la syntaxe suivante :
+</p>
+<p class="codeblock">STATS CLUS SIL /HELP.</p>
+
+<h2>Conditions requises</h2>
+Cette commande nécessite Python Essentials et la commande d'extension STATS CLUS SIL.
+Vous pouvez les télécharger depuis la communauté SPSS à l'adresse www.ibm.com/developerworks/spssdevcentral.
+

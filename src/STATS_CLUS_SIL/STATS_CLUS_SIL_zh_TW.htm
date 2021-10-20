@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>用於叢集分析的側影統計資料</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>用於叢集分析的側影統計資料</h1>
+此程序會針對叢集分析結果產生側影統計資料，這些資料可用於評估叢集結果。
+<p>
+此程序需要觀察值在記憶體中，且執行時間與觀察值數目的平方成比例。如果您沒有記憶體並且對此沒有耐心，請考量針對此程序使用資料的隨機樣本。
+
+
+
+<p><span class="runinhead">叢集號碼 </span>
+選取保留叢集成員資格號碼的變數。值範圍通常為 1 至 K，其中 K 是叢集數目，但允許有間隙，並會將間隙視為空叢集。
+</p>
+
+<p><span class="runinhead">結果變數</span> 輸入變數的名稱，這些變數用於為每一個觀察值及側影值保留下一個最佳叢集的數目。現有值（如果有的話）會被改寫。
+<p class="bullet">&bull; 側影值範圍為 -1 至 1，值接近 1 表示觀察值放置適當，值較小或為負數表示觀察值放置不適當。
+<p><span class="runinhead">相異性測量</span> 選取用於計算觀察值與側影評分之間相異性的測量。這通常與用於計算叢集的測量一致，但此程序不提供在 Statistics 中可用的所有不同的形成叢集測量。
+<p class="bullet">&bull; 除 Gower 測量外，所有形成叢集變數都必須是數值。
+
+<p><span class="runinhead">Euclidean</span> 是標準 Euclidean 距離
+<p><span class="runinhead">絕對差異</span> 是變數差異絕對值的總和
+<p><span class="runinhead">Minkowski</span> 是絕對差異的 p 次冪總和的 p 次根。在下面輸入要使用的冪。
+<p><span class="runinhead">Gower</span> 根據測量層次區分變數。比例變數透過絕對差異來測量（每一個差異除以變數範圍）。序數變數會重新編號，使值範圍為 1 至 M，其中 M 是相異值數目，然後視為比例。根據值是否相等，名義變數差異是 0 或 1。
+<p><span class="runinhead">上限</span> 是變數差異上限。它永不重新調整，但可以使用遺漏值的排除選項。
+<h2>選項</h2>
+<p><span class="runinhead">對序數變數重新編號</span> 使用此選項可指定應將序數變數重新編碼為 1:M（請參閱上文）。如果使用 Gower 測量，系統會自動完成此作業。
+<p><span class="runinhead">加權變數</span> 勾選此方框可指定每一個形成叢集變數的權重。在此欄位中輸入以空白區隔的權重清單。
+權重必須是非負數。
+
+<p><span class="runinhead">遺漏值</span> 可使用三種遺漏值處理方式來控制在觀察值包含遺漏值時計算觀察值配對之間差異的方式。
+<p><span class="runinhead">按比例重新調整測量</span>會導致根據無法計算的變數差異數目放大計算的差異。例如，如果有三個形成叢集變數，並且由於在任一或兩個觀察值中遺漏值而無法計算一個配對，則計算的值乘以 3/(3-1)。
+<p><span class="runinhead">在未重新調整的情況下使用測量</span>會使用從可用配對計算的值。
+<p><span class="runinhead">發生任何遺漏時排除觀察值</span>會導致在遺漏任何變數時遺漏距離。
+<h2>輸出</h2>
+<p>檢視器輸出一律包含側影資料的摘要表格。此外，還有三種類型的圖可用。
+<p><span class="runinhead">依叢集的直方圖</span>會產生鑲嵌圖，顯示每一個叢集的側影值的分佈。所有圖沿水平方向出現在單一列上。如果有許多叢集，使用垂直方向可能更好，因為它會每一列產生一幅圖。<p><span class="runinhead">依指派的及下一個最佳叢集的側影 3-D 長條圖</span> 勾選此方框可產生 3-D 長條圖，其指派的及下一個最佳叢集號碼分別在 x 軸及 z 軸上，而側影評分平均值在 y 軸上。<p><span class="runinhead">計數的 3-D 長條圖</span> 勾選此方框可產生 3-D 長條圖，其指派的及下一個最佳叢集在 x 軸及 z 軸上，而觀察值百分比在 y 軸上。每一個指派的叢集百分比的總和為 100。
+<h2>其他特性</h2>
+<p>
+此對話框會產生 STATS CLUS SIL 延伸指令的語法。若要顯示此指令的說明，請執行下列語法：</p>
+<p class="codeblock">STATS CLUS SIL /HELP.</p>
+
+<h2>需求</h2>
+此指令需要 Python Essentials 及 STATS CLUS SIL 延伸指令。您可以從 SPSS 社群 (www.ibm.com/developerworks/spssdevcentral) 下載這些指令。
+

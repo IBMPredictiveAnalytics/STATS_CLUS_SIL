@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>用于聚类分析的轮廓统计</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>用于聚类分析的轮廓统计</h1>
+此过程生成聚类分析结果的轮廓统计，这些统计对于评估聚类结果而言可能非常有用。
+<p>
+此过程要求将个案装入到内存中，并且执行时间与个案数的平方成正比。如果您没有内存和耐心来完成此装入，请考虑将数据的随机样本用于此过程。
+<p><span class="runinhead">聚类编号</span> 请选择包含聚类成员编号的变量。通常，值的范围是 1 到 K，其中 K 是聚类数，但是允许存在间隙，这些间隙将被视为空聚类。</p>
+
+<p><span class="runinhead">结果变量</span> 请输入变量的名称，这些变量用于存放每个个案及轮廓值的下一最佳聚类的编号。现有的值（如果有）将被覆盖。
+<p class="bullet">&bull; 轮廓值的范围是 -1 到 1，接近于 1 的值表明个案的位置较佳，而较小或者为负的值表明情况并非如此。
+<p><span class="runinhead">非相似性测量</span> 请选择用于计算个案之间的非相似性（从而计算得分）的测量。通常，这与用于计算聚类的测量一致，但此过程不像 Statistics 那样提供了各种不同的聚类测量。
+<p class="bullet">&bull; 除高尔测量以外，所有聚类变量都必须是数字。
+<p><span class="runinhead">欧氏</span>是标准的欧氏距离。
+<p><span class="runinhead">绝对差值</span>是变量差值的绝对值之和。
+<p><span class="runinhead">明可夫斯基</span>是绝对差值的 p 次幂之和的 p 次方根。请在下面输入要使用的幂。
+<p><span class="runinhead">高尔</span>根据测量级别来区分变量。标度变量由绝对差值测量，即，通过将每个差值除以变量范围进行测量。将对普通变量进行重新编号以使值的范围为 1 到 M，其中 M 是相异值数目，然后被视为标度。名义变量差值为 0 或 1，这取决于这些值是否相等。
+<p><span class="runinhead">最大值</span>是最大变量差值。系统不会对此值进行重新标度，但可以使用缺失值的排除选项。
+<h2>选项</h2>
+<p><span class="runinhead">对有序变量进行重新编号</span> 使用此选项可以指定应该将有序变量重新编码为 1:M（参见上文）。使用高尔测量时，此项重新编码工作将自动完成。
+<p><span class="runinhead">权重变量</span> 选中此框可以对每个聚类变量指定权重。请在此字段中输入以空格分隔的权重列表。权重必须是非负数。
+<p><span class="runinhead">缺失值</span> 可以通过三种缺失值处理方法来控制个案包含缺失值时计算一对个案之间的差值的方式。
+<p><span class="runinhead">按比例重新标度测量</span>将导致根据无法计算的变量差值数目对计算而得的差值进行按比例放大。例如，如果存在三个聚类变量，并且每个配对由于其中任意个案缺失值而无法计算，那么计算而得的值将乘以 3/(3-1)。
+<p><span class="runinhead">使用测量而不重新标度</span>使用根据可用配对计算而得的值。
+<p><span class="runinhead">缺失任何变量时排除个案</span>将导致缺失任何变量时距离缺失。
+<h2>输出</h2>
+<p>查看器输出始终包括轮廓数据的摘要表。另外，提供了三种类型的图。
+<p><span class="runinhead">按聚类排列的直方图</span>生成面板式图，其中显示了每个聚类的轮廓值的分布。在水平方向，所有的图显示在一行中。如果存在许多聚类，那么最好使用垂直方向，因为这将在每一行中生成一个图。
+<p><span class="runinhead">轮廓的三维条形图（按分配的聚类和下一最佳聚类排列）</span> 选中此框将生成三维条形图，其中的 X 和 Z 轴分别指示分配的聚类编号和下一最佳聚类编号，Y 轴指示平均轮廓得分。
+<p><span class="runinhead">计数的三维条形图</span> 选中此框将生成三维条形图，其中的 X 和 Z 轴分别指示分配的聚类和下一最佳聚类，Y 轴指示个案百分比。对于每个分配的聚类，百分比之和为 100。
+<h2>其他功能部件</h2>
+<p>
+此对话框将生成 STATS CLUS SIL 扩展命令的语法。要显示此命令的帮助，请运行以下语法：</p>
+<p class="codeblock">STATS CLUS SIL /HELP。</p>
+
+<h2>要求</h2>
+此命令需要 Python Essentials 和 STATS CLUS SIL 扩展命令。您可以从 SPSS Community (www.ibm.com/developerworks/spssdevcentral)
+进行下载。
+

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Extension debug="false" version="1.0" xmlns="http://spss.com/clementine/extensions" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://spss.com/clementine/extensions http://xml.spss.com/clementine/extensions/CLEFSpecificationFile.xsd">
+	<ExtensionDetails copyright="Licensed Materials - Property of IBM.  IBM SPSS Products: Statistics Common (C) Copyright IBM Corp. 1989, 2011.  US Government Users Restricted Rights - Use, duplication or  disclosure restricted by GSA ADP Schedule Contract with IBM Corp." description="" id="STATS_CLUS_SIL" label="" provider="SPSS, Inc." providerTag="spss" version="1.0"/>
+	<Resources>
+		<Bundle id="bundle1" path="STATS_CLUS_SIL" type="properties"/>
+	</Resources>
+	<CommonObjects>
+		<Actions>
+			<Action id="STATS_CLUS_SIL_action" imagePath="IBMdialogicon.png" label="Cluster Silhouettes" labelKey="STATS_CLUS_SIL_action.LABEL"/>
+		</Actions>
+	</CommonObjects>
+	<UserInterface>
+		<Controls>
+			<MenuItem action="STATS_CLUS_SIL_action" offset="3" showIcon="true" spssMenu="Analyze.analyze_classify"/>
+		</Controls>
+	</UserInterface>
+	<Node id="STATS_CLUS_SIL" label="Cluster Analysis Silhouettes" labelKey="STATS_CLUS_SIL.LABEL" type="modelBuilder">
+		<Properties>
+			<Property name="STATS_CLUS_SIL" syntax="STATS CLUS SIL %%clusternum%% %%clustervars%%&#10;%%nextbest%% %%silhouette%% %%dissimilarity%% %%minkowskipower%% &#10;/OPTIONS %%missingvalues%% %%renumberordinal%% %%weightvariables%%&#10;/OUTPUT %%histogram%% %%orientation%% %%threedbar%% %%threedhist%%&#10;"/>
+			<Property description="false" name="STATS_CLUS_SIL_modal"/>
+			<Property description="" descriptionKey="source_vars_tooltip.LABEL" isList="true" label="Variables:" labelKey="source_vars.LABEL" name="source_vars" selectionPool="source_fields" syntax="%%ThisValue%%" valueType="field"/>
+			<Property description="Select the variable containing the assigned cluster numbers" descriptionKey="clusternum_tooltip.LABEL" isList="true" isRequired="true" label="Cluster Number:" labelKey="clusternum.LABEL" name="clusternum" selectionPool="source_fields" syntax="CLUSTER=%%ThisValue%%" valueType="field"/>
+			<Property description="Select the clustering variables to compute the silhouette values" descriptionKey="clustervars_tooltip.LABEL" isList="true" isRequired="true" label="Cluster Variables:" labelKey="clustervars.LABEL" name="clustervars" selectionPool="source_fields" syntax="VARIABLES=%%ThisValue%%" valueType="field"/>
+			<Property defaultValue="euclid" description="Select the measure to be used to compute differences between cases" descriptionKey="dissimilarity_tooltip.LABEL" label="Dissimilarity Measure" labelKey="dissimilarity.LABEL" name="dissimilarity" syntax="DISSIMILARITY=%%ThisValue%%" valueType="enum">
+				<Enumeration>
+					<Enum description="" descriptionKey="euclid_tooltip.LABEL" hasSubGroup="false" label="Euclidean" labelKey="euclid.LABEL" mnemonic="E" mnemonicKey="euclid_mnemonic.VALUE" syntax="EUCLID" value="euclid"/>
+					<Enum description="" descriptionKey="absdiff_tooltip.LABEL" hasSubGroup="false" label="Absolute Difference" labelKey="absdiff.LABEL" mnemonic="A" mnemonicKey="absdiff_mnemonic.VALUE" syntax="ABSDIFF" value="absdiff"/>
+					<Enum description="" descriptionKey="minkowski_tooltip.LABEL" hasSubGroup="false" label="Minkowski (specify power below)" labelKey="minkowski.LABEL" mnemonic="M" mnemonicKey="minkowski_mnemonic.VALUE" syntax="MINKOWSKI" value="minkowski"/>
+					<Enum description="" descriptionKey="gower_tooltip.LABEL" hasSubGroup="false" label="Gower" labelKey="gower.LABEL" mnemonic="G" mnemonicKey="gower_mnemonic.VALUE" syntax="GOWER" value="gower"/>
+					<Enum description="" descriptionKey="maximum_tooltip.LABEL" hasSubGroup="false" label="Maximum" labelKey="maximum.LABEL" mnemonic="X" mnemonicKey="maximum_mnemonic.VALUE" syntax="MAXIMUM" value="maximum"/>
+				</Enumeration>
+			</Property>
+			<Property defaultValue="2" description="" descriptionKey="minkowskipower_tooltip.LABEL" label="Power for Minkowski" labelKey="minkowskipower.LABEL" name="minkowskipower" syntax="MINKOWSKIPOWER=%%ThisValue%%" valueType="double"/>
+			<Property defaultValue="false" description="check to renumber ordinal variables as positive integers" descriptionKey="renumberordinal_tooltip.LABEL" label="Renumber Ordinal Variables" labelKey="renumberordinal.LABEL" name="renumberordinal" syntax="RENUMBERORDINAL=YES±RENUMBERORDINAL=NO" valueType="boolean"/>
+			<Property description="" descriptionKey="weightvariables_tooltip.LABEL" label="Variable Weights" labelKey="weightvariables.LABEL" name="weightvariables" syntax="%%ThisValue%%"/>
+			<Property defaultValue="false" description="Use this box to provide a weight for each variable" descriptionKey="item_53_tooltip.LABEL" label="Weight variables" labelKey="item_53.LABEL" name="item_53" syntax="%%ThisValue%%±" valueType="boolean"/>
+			<Property defaultValue="" description="Enter as many weights as there are variables, separating each pair of values with a blank" descriptionKey="weights_tooltip.LABEL" label="Weights:" labelKey="weights.LABEL" name="weights" syntax="VARWEIGHTS=%%ThisValue%%" valueType="string"/>
+			<Property defaultValue="rescale" description="Treatment for user or system missing values" descriptionKey="missingvalues_tooltip.LABEL" label="Missing Values" labelKey="missingvalues.LABEL" name="missingvalues" syntax="MISSING=%%ThisValue%%" valueType="enum">
+				<Enumeration>
+					<Enum description="Increase measure in proportion to number of mssing measures" descriptionKey="rescale_tooltip.LABEL" hasSubGroup="false" label="Rescale measure in proportion" labelKey="rescale.LABEL" mnemonic="S" mnemonicKey="rescale_mnemonic.VALUE" syntax="RESCALE" value="rescale"/>
+					<Enum description="Use measure without adjustment" descriptionKey="ignore_tooltip.LABEL" hasSubGroup="false" label="Use measure without rescaling" labelKey="ignore.LABEL" mnemonic="G" mnemonicKey="ignore_mnemonic.VALUE" syntax="IGNORE" value="ignore"/>
+					<Enum description="Exclude entire case if any difference is missing" descriptionKey="omit_tooltip.LABEL" hasSubGroup="false" label="Exclude case if any missing" labelKey="omit.LABEL" mnemonic="O" mnemonicKey="omit_mnemonic.VALUE" syntax="OMIT" value="omit"/>
+				</Enumeration>
+			</Property>
+			<Property defaultValue="true" description="" descriptionKey="histogram_tooltip.LABEL" label="Histogram by cluster" labelKey="histogram.LABEL" name="histogram" syntax="HISTOGRAM=YES±HISTOGRAM=NO" valueType="boolean"/>
+			<Property defaultValue="horizontal" description="Use vertical if there too many clusters to fit on one row" descriptionKey="orientation_tooltip.LABEL" label="Histogram Orientation" labelKey="orientation.LABEL" name="orientation" syntax="ORIENTATION=%%ThisValue%%" valueType="enum">
+				<Enumeration>
+					<Enum description="" descriptionKey="horizontal_tooltip.LABEL" hasSubGroup="false" label="Horizontal" labelKey="horizontal.LABEL" mnemonic="O" mnemonicKey="horizontal_mnemonic.VALUE" syntax="HORIZONTAL" value="horizontal"/>
+					<Enum description="" descriptionKey="vertical_tooltip.LABEL" hasSubGroup="false" label="Vertical" labelKey="vertical.LABEL" mnemonic="V" mnemonicKey="vertical_mnemonic.VALUE" syntax="VERTICAL" value="vertical"/>
+				</Enumeration>
+			</Property>
+			<Property defaultValue="true" description="This graph may help in understanding the cluster structure" descriptionKey="threedbar_tooltip.LABEL" label="3-D bar of silhouettes by assigned and next best clusters" labelKey="threedbar.LABEL" name="threedbar" syntax="THREEDBAR=YES±THREEDBAR=NO" valueType="boolean"/>
+			<Property defaultValue="false" description="" descriptionKey="threedhist_tooltip.LABEL" label="3-D bar of counts" labelKey="threedhist.LABEL" name="threedhist" syntax="THREEDCOUNTS=YES±THREEDCOUNTS=NO" valueType="boolean"/>
+			<Property description="" descriptionKey="item_37_tooltip.LABEL" isRequired="true" label="Result Variables" labelKey="item_37.LABEL" name="item_37" syntax="%%ThisValue%%"/>
+			<Property defaultValue="" description="Enter a name for the variable for the cluster number of the next best cluster" descriptionKey="nextbest_tooltip.LABEL" isRequired="true" label="Next Best Cluster" labelKey="nextbest.LABEL" name="nextbest" syntax="NEXTBEST=%%ThisValue%%" valueType="fieldName"/>
+			<Property defaultValue="" description="Enter a name for the variable for the silhouette statistic for each case" descriptionKey="silhouette_tooltip.LABEL" isRequired="true" label="Silhouette Value" labelKey="silhouette.LABEL" name="silhouette" syntax="SILHOUETTE=%%ThisValue%%" valueType="fieldName"/>
+		</Properties>
+		<SelectionPool id="source_fields" type="fields"/>
+		<UserInterface>
+			<Tabs>
+				<Tab helpLink="STATS_CLUS_SIL.htm" label="">
+					<PropertiesPanel>
+						<SourceFieldsBrowser copyFields="false" mnemonic="V" mnemonicKey="source_vars_mnemonic.VALUE" property="source_vars" selectionPool="source_fields" storage="[real integer date time string]">
+							<Layout columnWeight="1.0" fill="both" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="1.0"/>
+						</SourceFieldsBrowser>
+						<SingleFieldChooserControl mnemonic="N" mnemonicKey="clusternum_mnemonic.VALUE" property="clusternum" storage="[real integer]">
+							<Layout columnWeight="1.0" fill="horizontal" gridColumn="2" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+						</SingleFieldChooserControl>
+						<MultiFieldChooserControl mnemonic="C" mnemonicKey="clustervars_mnemonic.VALUE" property="clustervars" storage="[real integer date time string]">
+							<Layout columnWeight="1.0" fill="both" gridColumn="2" gridRow="1" gridWidth="1" rowWeight="1.0"/>
+						</MultiFieldChooserControl>
+						<RadioButtonGroupControl property="dissimilarity" rows="5" useSubPanel="false">
+							<Layout columnWeight="1.0" fill="both" gridColumn="2" gridRow="3" gridWidth="1" rowWeight="1.0"/>
+							<RadioButton property="euclid"/>
+							<RadioButton property="absdiff"/>
+							<RadioButton property="minkowski"/>
+							<RadioButton property="gower"/>
+							<RadioButton property="maximum"/>
+						</RadioButtonGroupControl>
+						<TextBoxControl mnemonic="W" mnemonicKey="minkowskipower_mnemonic.VALUE" property="minkowskipower">
+							<Layout columnWeight="1.0" fill="horizontal" gridColumn="2" gridRow="4" gridWidth="1" rowWeight="0.0"/>
+						</TextBoxControl>
+						<PropertiesSubPanel buttonLabel="Options..." buttonLabelKey="options.LABEL" dialogTitle="Options" dialogTitleKey="optionssub.TITLE" helpLink="" mnemonic="O" mnemonicKey="options_mnemonic.VALUE">
+							<Layout columnWeight="0.0" fill="none" gridColumn="3" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+							<PropertiesPanel>
+								<CheckBoxControl mnemonic="R" mnemonicKey="renumberordinal_mnemonic.VALUE" property="renumberordinal">
+									<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+								</CheckBoxControl>
+								<PropertiesPanel id="weightvariables" label="Variable Weights" labelKey="weightvariables.LABEL">
+									<Layout columnWeight="1.0" fill="both" gridColumn="0" gridRow="1" gridWidth="1" rowWeight="1.0"/>
+									<CheckBoxControl labelAbove="true" mnemonic="W" mnemonicKey="item_53_mnemonic.VALUE" property="item_53">
+										<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+									</CheckBoxControl>
+									<TextBoxControl mnemonic="E" mnemonicKey="weights_mnemonic.VALUE" property="weights">
+										<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="1" gridWidth="1" leftIndent="8" rowWeight="1.0"/>
+									</TextBoxControl>
+								</PropertiesPanel>
+								<RadioButtonGroupControl property="missingvalues" rows="3" useSubPanel="false">
+									<Layout columnWeight="1.0" fill="both" gridColumn="0" gridRow="2" gridWidth="1" rowWeight="1.0"/>
+									<RadioButton property="rescale"/>
+									<RadioButton property="ignore"/>
+									<RadioButton property="omit"/>
+								</RadioButtonGroupControl>
+							</PropertiesPanel>
+						</PropertiesSubPanel>
+						<PropertiesSubPanel buttonLabel="Output..." buttonLabelKey="output.LABEL" dialogTitle="Output" dialogTitleKey="outputsub.TITLE" helpLink="" mnemonic="U" mnemonicKey="output_mnemonic.VALUE">
+							<Layout columnWeight="0.0" fill="none" gridColumn="3" gridRow="1" gridWidth="1" rowWeight="0.0"/>
+							<PropertiesPanel>
+								<CheckBoxControl mnemonic="H" mnemonicKey="histogram_mnemonic.VALUE" property="histogram">
+									<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+								</CheckBoxControl>
+								<RadioButtonGroupControl property="orientation" rows="2" useSubPanel="false">
+									<Layout columnWeight="1.0" fill="both" gridColumn="0" gridRow="1" gridWidth="1" rowWeight="1.0"/>
+									<RadioButton property="horizontal"/>
+									<RadioButton property="vertical"/>
+								</RadioButtonGroupControl>
+								<CheckBoxControl mnemonic="3" mnemonicKey="threedbar_mnemonic.VALUE" property="threedbar">
+									<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="2" gridWidth="1" rowWeight="0.0"/>
+								</CheckBoxControl>
+								<CheckBoxControl mnemonic="D" mnemonicKey="threedhist_mnemonic.VALUE" property="threedhist">
+									<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="3" gridWidth="1" rowWeight="0.0"/>
+								</CheckBoxControl>
+							</PropertiesPanel>
+						</PropertiesSubPanel>
+						<PropertiesPanel id="item_37" label="Result Variables" labelKey="item_37.LABEL">
+							<Layout columnWeight="1.0" fill="both" gridColumn="2" gridRow="2" gridWidth="1" rowWeight="1.0"/>
+							<TextBoxControl mnemonic="N" mnemonicKey="nextbest_mnemonic.VALUE" property="nextbest">
+								<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+							</TextBoxControl>
+							<TextBoxControl mnemonic="S" mnemonicKey="silhouette_mnemonic.VALUE" property="silhouette">
+								<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="1" gridWidth="1" rowWeight="1.0"/>
+							</TextBoxControl>
+						</PropertiesPanel>
+						<StaticText text="This dialog was created using a later version of PASW Statistics\nand certain features may not function as intended." textKey="v17_warning.LABEL">
+							<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="1" gridWidth="1" rowWeight="1.0"/>
+						</StaticText>
+					</PropertiesPanel>
+				</Tab>
+			</Tabs>
+		</UserInterface>
+	</Node>
+</Extension>

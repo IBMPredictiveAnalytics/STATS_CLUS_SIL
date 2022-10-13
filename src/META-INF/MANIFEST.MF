@@ -1,4 +1,5 @@
 Name: STATS CLUS SIL
+Display-Name: Silhouette Cluster Analysis
 Dialog-Specs: STATS_CLUS_SIL.spd
 Command-Specs: STATS_CLUS_SIL.xml
 Code-Files: STATS_CLUS_SIL.py
@@ -9,7 +10,7 @@ Description: This procedure computes and optionally plots silhouette m
  ovides several different dissimilarity measures and plots that work w
  ith the output from a cluster analysis procedure
 Author: JKP, IBM SPSS
-Version: 2.0.0
+Version: 2.0.1
 Product-Version: 24
 Date: 9/10/2011
 Categories: statistics

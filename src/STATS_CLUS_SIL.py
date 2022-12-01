@@ -17,6 +17,7 @@ __version__ = "1.0.1"
 
 # history
 # 06-sep-2011  original version
+# 01-dec-2022  handle case where cluster assignment is missing
 
 helptext="""
 Calculate Cluster silhouette statistics for a clustering analysis already carried out.
@@ -98,6 +99,16 @@ from extension import Template, Syntax, processcmd
 
 import random, math
 
+# debugging
+        # makes debug apply only to the current thread
+#try:
+    #import wingdbstub
+    #import threading
+    #wingdbstub.Ensure()
+    #wingdbstub.debugger.SetDebugThreads({threading.get_ident(): 1})
+#except:
+    #pass
+
 class Dissimfuncs(object):
     """Dissimilarity calculators"""
     
@@ -157,7 +168,7 @@ class Dissimfuncs(object):
         if dissim == "gower":
             # calculate ranges for clustering variables.  Ignore cluster number in first column
             mins = [min(item[k] for item in self.cases if item[k] is not None) for k in range(1, self.intnumvars)]
-            maxes = [max(item[k] for item in self.cases) for k in range(1, self.intnumvars)]
+            maxes = [max(item[k] for item in self.cases if item[k] is not None) for k in range(1, self.intnumvars)]
             self.vrange = []
             try:
                 for v in range(self.intnumclusvars):
@@ -308,7 +319,7 @@ class Silcomp(object):
         self.cases = cases
         self.numcases = len(self.cases)
         self.numvars = len(self.cases[0])  # number of variables used for clustering plus cluster id
-        self.numclus = int(max(item[0] for item in self.cases))  # clusters could be missing in the data
+        self.numclus = int(max(item[0] for item in self.cases if item[0] is not None))  # clusters could be missing in the data
         if not (2 <= self.numclus < self.numcases):
             raise ValueError(_("""Silhouettes cannot be computed: either there is only one cluster
 or every cluster is size 1"""))

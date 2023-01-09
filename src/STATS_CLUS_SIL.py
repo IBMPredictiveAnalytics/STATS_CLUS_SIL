@@ -13,11 +13,12 @@
 # Compute and plot silhouettes for clustering
 
 __author__ = "SPSS, JKP"
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 
 # history
 # 06-sep-2011  original version
 # 01-dec-2022  handle case where cluster assignment is missing
+# 07-jan-2023  fix histogram paneling
 
 helptext="""
 Calculate Cluster silhouette statistics for a clustering analysis already carried out.
@@ -487,7 +488,7 @@ MISSING=LISTWISE REPORTMISSING=NO
 /GRAPHSPEC SOURCE=VIZTEMPLATE(NAME="Histogram"[LOCATION=LOCAL]
 MAPPING( "x"="%(silhouette)s"[DATASET="graphdataset"] 
 "Footnote"="%(footnote)s" "Title"="%(title)s"
-"Panel "+
+"Panel_"+
 "%(paneling)s"="%(cluster)s" [DATASET="graphdataset"] "Summary"="count"))
 VIZSTYLESHEET="Traditional"[LOCATION=LOCAL]
     LABEL='%(label)s'

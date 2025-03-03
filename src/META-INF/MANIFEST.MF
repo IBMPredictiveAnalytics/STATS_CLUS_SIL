@@ -1,4 +1,5 @@
 Name: STATS CLUS SIL
+Display-Name: Cluster Silhouettes
 Dialog-Specs: STATS_CLUS_SIL.spd
 Command-Specs: STATS_CLUS_SIL.xml
 Code-Files: STATS_CLUS_SIL.py

@@ -13,12 +13,13 @@
 # Compute and plot silhouettes for clustering
 
 __author__ = "SPSS, JKP"
-__version__ = "1.0.2"
+__version__ = "1.0.3"
 
 # history
 # 06-sep-2011  original version
 # 01-dec-2022  handle case where cluster assignment is missing
 # 07-jan-2023  fix histogram paneling
+# 31-oct-2025  fix None comparison in sort problem due to Python 3 change
 
 helptext="""
 Calculate Cluster silhouette statistics for a clustering analysis already carried out.
@@ -186,6 +187,7 @@ class Dissimfuncs(object):
                 raise ValueError(_("""The number of variable weights must be equal to the number of variables"""))
         self.weights = weights
 
+
     def renumber(self):
         """Renumber each ordinal variable so that its values are consective whole numbers starting at 1"""
         
@@ -195,8 +197,8 @@ class Dissimfuncs(object):
         for v in range(1, self.intnumvars):
             if self.varmeta[v - 1][1] == "ordinal":
                 # construct sorted list of distinct,  nonmissing values
-                thevalues = sorted(set([item[v] for item in self.cases]))
-                if thevalues[0] is None:
+                thevalues = sorted(set([item[v] for item in self.cases]), key = lambda x: x if x is not None else -math.inf)
+                if thevalues[0] == -math.inf:
                     del(thevalues[0])
                 # recode ordinal values to 1:V where V is the number of distinct values
                 recodedict = dict((k,float(v)) for k, v in zip(thevalues, list(range(1, len(thevalues)+1))))
